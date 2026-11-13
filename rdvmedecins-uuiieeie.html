@@ -1,0 +1,1931 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="[Angular] Web 框架分步入门">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/zh-angular-etape-par-etape-sept-2026/rdvmedecins-uuiieeie.html">
+      
+      
+        <link rel="prev" href="uoiua.html">
+      
+      
+        <link rel="next" href="uuuiongin.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>7. RdvMedecins 服务器，一个黑盒 - [Angular] Web 框架分步入门</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "[Angular] Web 框架分步入门";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7-rdvmedecins" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="[Angular] Web 框架分步入门" class="md-header__button md-logo" aria-label="[Angular] Web 框架分步入门" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            [Angular] Web 框架分步入门
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7. RdvMedecins 服务器，一个黑盒
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/zh-angular-etape-par-etape-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="[Angular] Web 框架分步入门" class="md-nav__button md-logo" aria-label="[Angular] Web 框架分步入门" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    [Angular] Web 框架分步入门
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/zh-angular-etape-par-etape-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    欢迎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ianie.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="angular-uen.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Angular 入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="uian.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 组件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="uou.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 路由
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="euanhauiianguongianghuangai.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 可观察对象与共享状态
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="uoiua.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 国际化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. RdvMedecins 服务器，一个黑盒
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="rdvmedecins-uuiieeie.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. RdvMedecins 服务器，一个黑盒
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#71-rdvmedecins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1. RdvMedecins 应用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2. 安装
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3. 响应格式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4. 身份验证
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5. API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#76-curl-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6. 使用 curl 查询 API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.6. 使用 curl 查询 API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#761" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6.1. 登录
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#762" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6.2. 医生、客户、日程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#763" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6.3. 预约
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#764" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6.4. 患者的视角
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#765" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6.5. 医生的视角
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#766-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6.6. 管理医生和客户（ADMIN）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#767" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6.7. 创建账户
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#768" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6.8. 管理你的账户
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#769" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6.9. 一些错误
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="uuuiongin.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 与服务器通信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ieuaningieun.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 阶段性结论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="nianiurdvmedecins-ingonghengue-angular-euuan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 案例研究：RdvMedecins 应用程序的 Angular 客户端
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="uhu.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 部署
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ieun.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 结论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="uu.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 附录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="7-rdvmedecins">7. <span style="color: #2e74b5">RdvMedecins 服务器，一个黑盒</span></h1>
+<p>示例 22 至 25 以及案例研究都与一个服务器交互：即<em>[RdvMedecins]</em>应用的 JSON 服务器。它就是上一课中的<em>[NestJS]</em>服务器，其控制器不再生成 HTML 页面，而是生成 JSON 响应。它的业务层和数据访问层保持不变。</p>
+<p>在本课程中，这个服务器是一个<strong>黑盒</strong>：我们无需知道它是如何编写的。重要的只是它的<strong>API</strong>——也就是它接受的 HTTP 请求列表以及它返回的响应。这是客户端开发人员的典型处境：API 是一份契约，服务器团队可以在这份契约背后随意更改任何内容。对于好奇的读者，我们提供了它的源代码（<strong><em>[rdvmedecins-nestjs-json]</em></strong>文件夹），并附有详尽的注释。</p>
+<p>本章说明如何安装该服务器，描述其 API，并使用<em>[curl]</em>对其进行查询。</p>
+<h2 id="71-rdvmedecins">7.1. <span style="color: #2e74b5">RdvMedecins 应用</span></h2>
+<p>该应用用于管理一家医疗诊所的预约。它有三种角色：</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>角色</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>对象</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>可执行的操作</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[ADMIN]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">管理员（<i><b>[admin]</b></i>）</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">为所有患者安排和取消预约；管理医生和客户</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[DOCTOR]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">医生（<i><b>[pelissier]</b></i>、<i><b>[tatou]</b></i>、<i><b>[dupont]</b></i>）</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">为所有患者安排和取消预约；在日历中查看所有姓名</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[USER]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">患者（<i><b>[martin]</b></i>、<i><b>[durand]</b></i>、<i><b>[bistrou]</b></i>、<i><b>[german]</b></i>）</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">为自己预约；取消自己的预约；管理自己的账户。在日历中，他们看不到其他患者的姓名</div></td></tr></table>
+
+<p>演示账户使用其登录名作为密码。管理规则由服务器验证，与客户端无关：</p>
+<ul>
+<li>不允许预约过去的时间；</li>
+<li>每位患者只能有一个即将到来的预约；</li>
+<li>同一时间段每天只能被预约一次；</li>
+<li>两位医生（或两位客户）不能拥有相同的姓和名；一个登录名只属于一个账户；</li>
+<li>有预约的医生不能被删除；</li>
+<li>在此期间已被他人修改的记录不能被覆盖（乐观锁）；</li>
+<li>患者绝不会被分配到另一位患者的姓名。</li>
+</ul>
+<h2 id="72">7.2. <span style="color: #2e74b5">安装</span></h2>
+<p>你需要<em>[Node.js]</em> 以及一个<em>[MySQL]</em> （或<em>[MariaDB]</em>）服务器：附录中介绍了它们的安装方法。</p>
+<p><strong>1. 数据库。</strong>脚本<strong><em>[database/dbrdvmedecins2.sql]</em></strong> 会创建数据库<strong><em>[dbrdvmedecins2]</em></strong>、它的表以及示例数据。使用<em>[Laragon]</em>时，在<em>[HeidiSQL]</em> 中运行它（“文件”菜单 / 运行 SQL 文件）；在命令行中：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mysql -u root -p &lt; database/dbrdvmedecins2.sql
+</code></pre></div>
+<p>该脚本总是从一个空数据库开始：你可以重新运行它来恢复初始数据。</p>
+<p><strong>2. 库。</strong>在打开到<strong><em>[rdvmedecins-nestjs-json]</em></strong>文件夹的控制台窗口中：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>npm install
+</code></pre></div>
+<p><strong>3. 配置。</strong>将文件<strong><em>[.env.example]</em></strong> 复制为<strong><em>[.env]</em></strong> （在<em>[Windows]</em>下：<strong><em>[copy .env.example .env]</em></strong>），然后修改它：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span>
+<span class="normal"><a href="#__codelineno-2-30">30</a></span>
+<span class="normal"><a href="#__codelineno-2-31">31</a></span>
+<span class="normal"><a href="#__codelineno-2-32">32</a></span>
+<span class="normal"><a href="#__codelineno-2-33">33</a></span>
+<span class="normal"><a href="#__codelineno-2-34">34</a></span>
+<span class="normal"><a href="#__codelineno-2-35">35</a></span>
+<span class="normal"><a href="#__codelineno-2-36">36</a></span>
+<span class="normal"><a href="#__codelineno-2-37">37</a></span>
+<span class="normal"><a href="#__codelineno-2-38">38</a></span>
+<span class="normal"><a href="#__codelineno-2-39">39</a></span>
+<span class="normal"><a href="#__codelineno-2-40">40</a></span>
+<span class="normal"><a href="#__codelineno-2-41">41</a></span>
+<span class="normal"><a href="#__codelineno-2-42">42</a></span>
+<span class="normal"><a href="#__codelineno-2-43">43</a></span>
+<span class="normal"><a href="#__codelineno-2-44">44</a></span>
+<span class="normal"><a href="#__codelineno-2-45">45</a></span>
+<span class="normal"><a href="#__codelineno-2-46">46</a></span>
+<span class="normal"><a href="#__codelineno-2-47">47</a></span>
+<span class="normal"><a href="#__codelineno-2-48">48</a></span>
+<span class="normal"><a href="#__codelineno-2-49">49</a></span>
+<span class="normal"><a href="#__codelineno-2-50">50</a></span>
+<span class="normal"><a href="#__codelineno-2-51">51</a></span>
+<span class="normal"><a href="#__codelineno-2-52">52</a></span>
+<span class="normal"><a href="#__codelineno-2-53">53</a></span>
+<span class="normal"><a href="#__codelineno-2-54">54</a></span>
+<span class="normal"><a href="#__codelineno-2-55">55</a></span>
+<span class="normal"><a href="#__codelineno-2-56">56</a></span>
+<span class="normal"><a href="#__codelineno-2-57">57</a></span>
+<span class="normal"><a href="#__codelineno-2-58">58</a></span>
+<span class="normal"><a href="#__codelineno-2-59">59</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1"># -----------------------------------------------------------------------</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="c1"># Sample configuration file.</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="c1"># Copy this file to [.env] then adapt the values to your machine.</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="c1"># The [.env] file must never be shared or committed (passwords).</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="c1"># -----------------------------------------------------------------------</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="c1"># listening port of the JSON server (the Angular client reaches it through the ng serve proxy)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="na">PORT</span><span class="o">=</span><span class="s">8080</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="c1"># connection parameters for the MySQL database [dbrdvmedecins2]</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="c1"># (script: database/dbrdvmedecins2.sql)</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="na">DB_HOST</span><span class="o">=</span><span class="s">localhost</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="na">DB_PORT</span><span class="o">=</span><span class="s">3306</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="na">DB_USERNAME</span><span class="o">=</span><span class="s">root</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="na">DB_PASSWORD</span><span class="o">=</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="na">DB_DATABASE</span><span class="o">=</span><span class="s">dbrdvmedecins2</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="c1"># true: displays in the console the SQL queries sent to MySQL</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="na">DB_LOGGING</span><span class="o">=</span><span class="s">false</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="c1"># -----------------------------------------------------------------------</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="c1"># authentication</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="c1"># -----------------------------------------------------------------------</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="c1"># secret key used to sign/verify JWT tokens - MUST be changed</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="c1"># in production (a long random string, never committed).</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="na">JWT_SECRET</span><span class="o">=</span><span class="s">change-me-to-a-long-random-string</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="c1"># validity of a JWT token, in seconds (7200 s = 2 h). The cookie</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="c1"># that carries the token has the same lifetime.</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="na">JWT_EXPIRES_IN_SECONDS</span><span class="o">=</span><span class="s">7200</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="c1"># set to true in production (site served over HTTPS): the authentication</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="c1"># cookie will then never be sent over an unencrypted connection.</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="na">COOKIE_SECURE</span><span class="o">=</span><span class="s">false</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32"></a>
+<a id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="c1"># -----------------------------------------------------------------------</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="c1"># protection against bots</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="c1"># -----------------------------------------------------------------------</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36"></a><span class="c1"># login: number of failures (wrong captcha or password) allowed for</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37"></a><span class="c1"># the same login from the same IP address, before this pair is blocked...</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38"></a><span class="na">LOGIN_MAX_FAILURES</span><span class="o">=</span><span class="s">5</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="c1"># ... for this duration (an IP address is also blocked if it accumulates</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40"></a><span class="c1"># 5 times more failures, all logins combined)</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41"></a><span class="na">LOGIN_BLOCK_MINUTES</span><span class="o">=</span><span class="s">15</span>
+<a id="__codelineno-2-42" name="__codelineno-2-42"></a><span class="c1"># client account creation: maximum number of accounts created per hour</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43"></a><span class="c1"># from the same IP address. In a classroom, all computers often go out</span>
+<a id="__codelineno-2-44" name="__codelineno-2-44"></a><span class="c1"># through the same address: increase if needed.</span>
+<a id="__codelineno-2-45" name="__codelineno-2-45"></a><span class="na">REGISTRATION_MAX_PER_HOUR</span><span class="o">=</span><span class="s">10</span>
+<a id="__codelineno-2-46" name="__codelineno-2-46"></a>
+<a id="__codelineno-2-47" name="__codelineno-2-47"></a><span class="c1"># captcha TEST MODE: if this variable has a value, that value is</span>
+<a id="__codelineno-2-48" name="__codelineno-2-48"></a><span class="c1"># accepted as the answer to ANY captcha. Handy to query</span>
+<a id="__codelineno-2-49" name="__codelineno-2-49"></a><span class="c1"># the API with curl (you cannot "read" the image in a console).</span>
+<a id="__codelineno-2-50" name="__codelineno-2-50"></a><span class="c1"># Leave EMPTY in production.</span>
+<a id="__codelineno-2-51" name="__codelineno-2-51"></a><span class="na">CAPTCHA_TEST</span><span class="o">=</span>
+<a id="__codelineno-2-52" name="__codelineno-2-52"></a>
+<a id="__codelineno-2-53" name="__codelineno-2-53"></a><span class="c1"># -----------------------------------------------------------------------</span>
+<a id="__codelineno-2-54" name="__codelineno-2-54"></a><span class="c1"># production</span>
+<a id="__codelineno-2-55" name="__codelineno-2-55"></a><span class="c1"># -----------------------------------------------------------------------</span>
+<a id="__codelineno-2-56" name="__codelineno-2-56"></a><span class="c1"># folder of the compiled Angular client, served by this server (default: client/)</span>
+<a id="__codelineno-2-57" name="__codelineno-2-57"></a><span class="c1"># CLIENT_DIR=client</span>
+<a id="__codelineno-2-58" name="__codelineno-2-58"></a><span class="c1"># set to true if the server is behind a proxy (nginx...)</span>
+<a id="__codelineno-2-59" name="__codelineno-2-59"></a><span class="na">TRUST_PROXY</span><span class="o">=</span><span class="s">false</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 8 行：服务器监听 8080 端口；</li>
+<li>第 12–16 行：与<em>[MySQL]</em>的连接。使用<em>[Laragon]</em>时，用户<strong><em>[root]</em></strong> 没有密码：默认值即可；</li>
+<li>第 25 行：用于签署身份验证令牌的密钥；</li>
+<li>第 38–45 行：反机器人保护（多次登录失败后锁定、每小时创建的账户数量）；</li>
+<li>第 51 行：<strong>验证码（CAPTCHA）测试模式</strong>。登录页面要求用户重新输入图片中的字符，这在控制台中是无法做到的。如果该变量有值，则该值会被接受为任何验证码的答案，类似于<em>[Google]</em> 为其<em>[reCAPTCHA]</em>提供的“测试密钥”。对于本章中使用<em>[curl]</em> 进行的测试，请输入<strong><em>[CAPTCHA_TEST=test]</em></strong>。在生产环境中请将其保持为空；</li>
+<li>第 57–59 行：两项生产环境的设置（参见“部署”一章）。</li>
+</ul>
+<p><strong>4. 启动。</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>npm run start:dev
+</code></pre></div>
+<p>控制台显示（节选）：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span>
+<span class="normal"><a href="#__codelineno-4-7">7</a></span>
+<span class="normal"><a href="#__codelineno-4-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>[Nest] LOG [NestFactory] Starting Nest application...
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>[Nest] WARN [RdvMedecins] captcha TEST MODE active (CAPTCHA_TEST in .env): never use it in production
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>[Nest] LOG [RoutesResolver] ScheduleController {/api/schedule}:
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>[Nest] LOG [RouterExplorer] Mapped {/api/schedule, GET} route
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>[Nest] LOG [RoutesResolver] AppointmentsController {/api/appointments}:
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>...
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>[Nest] LOG [NestApplication] Nest application successfully started
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>[Nest] LOG [RdvMedecins] JSON server started: http://localhost:8080/api
+</code></pre></div></td></tr></table></div>
+<p>如果数据库无法访问（<em>[MySQL]</em>服务器已停止、密码错误），服务器会立即停止，并显示连接错误消息。</p>
+<h2 id="73">7.3. <span style="color: #2e74b5">响应格式</span></h2>
+<p>所有 URL 都以<strong><em>[/api]</em></strong>开头。成功的请求会收到 2xx 状态码，并在响应体中收到 JSON 格式的所请求数据。被拒绝的请求会收到 4xx 或 5xx 状态码，并在响应体中收到同样格式的数据：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span>
+<span class="normal"><a href="#__codelineno-5-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">  </span><span class="nt">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">  </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERRORS.INVALID_FORM"</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">  </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"min"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">  </span><span class="nt">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERRORS.LASTNAME_REQUIRED"</span><span class="p">,</span><span class="w"> </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERRORS.PASSWORD_TOO_SHORT"</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><strong><em>[statusCode]</em></strong>：HTTP 状态码，在响应体中重复出现；</li>
+<li><strong><em>[key]</em></strong>：消息的<strong>翻译键</strong>。服务器从不返回要显示的文本：它不再知道用户的语言。由客户端使用其字典翻译该键（参见示例 21）；</li>
+<li><strong><em>[params]</em></strong> （可选）：消息参数（<strong><em>[At least {min} characters], [Try again in {minutes} minute(s)]</em></strong>）；</li>
+<li><strong><em>[fields]</em></strong> （可选）：对于被拒绝的表单，给出每个字段的错误。</li>
+</ul>
+<p>使用的状态码：</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>状态码</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>含义</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>键的示例</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">400</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">无效请求</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[ERRORS.INVALID_FORM] </b></i>（+ fields）、<i><b>[ERRORS.INVALID_DATE]</b></i>、<i><b>[ERRORS.WRONG_CAPTCHA]</b></i>、<i><b>[ERRORS.CHOOSE_PATIENT]</b></i>、<i><b>[ERRORS.WRONG_CURRENT_PASSWORD]</b></i>、<i><b>[ERRORS.BAD_REQUEST]</b></i>……</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">401</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">未通过身份验证</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[ERRORS.AUTH_REQUIRED] </b></i>（无令牌）、<i><b>[ERRORS.SESSION_EXPIRED] </b></i>（令牌无效或已过期）、<i><b>[LOGIN.ERROR]</b></i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">403</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">拒绝访问</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[ERRORS.FORBIDDEN] </b></i>（角色权限不足）、<i><b>[ERRORS.CAPTCHA_BEFORE_ACCOUNT] </b></i>（没有通行令牌）</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">404</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">未找到</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[ERRORS.NOT_FOUND]</b></i>、<i><b>[ERRORS.DOCTOR_NOT_FOUND]</b></i>、<i><b>[ERRORS.APPOINTMENT_NOT_FOUND]</b></i>……</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">409</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">违反业务规则</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[ERRORS.PAST_DATE]</b></i>、<i><b>[ERRORS.SLOT_ALREADY_BOOKED]</b></i>、<i><b>[ERRORS.LOGIN_TAKEN]</b></i>、<i><b>[ERRORS.CONCURRENT_UPDATE]</b></i>……</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">415</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">非 JSON 格式的 POST</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[ERRORS.JSON_REQUIRED]</b></i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">429</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">尝试次数过多</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[ERRORS.TOO_MANY_ATTEMPTS]</b></i>、<i><b>[ERRORS.TOO_MANY_ACCOUNTS] </b></i>（+ params.minutes）</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">500</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">服务器错误</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[ERRORS.SERVER_ERROR]</b></i></div></td></tr></table>
+
+<h2 id="74">7.4. <span style="color: #2e74b5">身份验证</span></h2>
+<p>客户端使用<strong><em>[POST /api/auth/login]</em></strong>进行身份验证，提交用户名、密码和验证码答案。作为回应，服务器会在浏览器中放置一个<strong>Cookie</strong>，其中包含已签名的 JWT 令牌：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>Set-Cookie: rdvmedecins_jwt=eyJhbGciOiJIUzI1NiIs...; Max-Age=7200; Path=/api; HttpOnly; SameSite=Strict
+</code></pre></div></td></tr></table></div>
+<p>它的属性对安全性很重要：</p>
+<ul>
+<li><strong><em>[HttpOnly]</em></strong>：页面的<em>[JavaScript]</em>代码无法读取此 Cookie。因此，注入页面的恶意脚本无法窃取令牌。对客户端的影响是：它无法自行判断是否已登录，而要询问服务器（<strong><em>[GET /api/auth/me]</em></strong>）；</li>
+<li><strong><em>[Path=/api]</em></strong>：浏览器仅在发往 API 的请求中携带它；</li>
+<li><strong><em>[SameSite=Strict]</em></strong>：浏览器仅在从此站点的页面发出的请求中携带该令牌。另一个站点上的恶意页面无法让浏览器代表用户执行操作（即所谓的 CSRF 攻击）；</li>
+<li><strong><em>[Max-Age=7200]</em></strong>：它在两小时后过期，与令牌的过期时间一致。</li>
+</ul>
+<p>此后，浏览器会在发往<strong><em>[/api]</em></strong>的每个请求中自动发送这个 Cookie。因此，只要页面和 API 共享<em>[Angular]</em> 客户端的<strong>同源</strong> （相同的协议、相同的机器、相同的端口），客户端就无需做任何事情来验证自己的身份。这就是<em>[Angular]</em>开发服务器上代理的作用（参见示例 22），在生产环境中则由服务器自身承担（参见“部署”一章）。</p>
+<p>针对 CSRF 攻击的第二重保护：服务器会拒绝（415）任何请求体不是 JSON 的 POST 请求。其他站点上被篡改的 HTML 表单无法发送 JSON。</p>
+<h2 id="75-api">7.5. <span style="color: #2e74b5">API</span></h2>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>方法</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>地址</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>角色</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>发送的/响应的请求体</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">GET</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/captcha]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">公开</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">响应：<i><b>[{ id, svg }]</b></i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">POST</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/auth/login]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">公开</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[{ login, password, captchaId, captcha }]</b></i>；响应：<i><b>[{ login, name, role }] </b></i>+ Cookie</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">POST</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/auth/logout]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">公开</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[{}]</b></i>；删除 Cookie</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">GET</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/auth/me]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">已登录</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">响应：<i><b>[{ login, name, role }]</b></i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">GET</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/schedule?doctorId=&amp;day=]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">全部</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">响应：日程（未指定 doctorId 时：对 DOCTOR 而言，返回其本人的日程）</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">POST</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/appointments]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">全部</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[{ day, slotId, clientId }]（对于 USER，clientId 会被忽略</b></i>）；201</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">DELETE</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/appointments/:id]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">全部</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">USER 只能取消自己的预约</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">GET</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/doctors]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">全部</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">列表（对 ADMIN 包含 login）</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">GET</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/clients]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">ADMIN, DOCTOR</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">列表（对 ADMIN 包含 login）</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">GET</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/doctors/:id]</b></i>、<i><b>[/api/clients/:id]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">ADMIN</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">一条记录</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">POST</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/doctors]</b></i>、<i><b>[/api/clients]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">ADMIN</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[{ title, firstName, lastName, login?, password? }]</b></i>；201</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">PUT</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/doctors/:id]</b></i>、<i><b>[/api/clients/:id]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">ADMIN</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[{ title, firstName, lastName, login?, password?, version }]</b></i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">DELETE</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/doctors/:id]</b></i>、<i><b>[/api/clients/:id]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">ADMIN</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">响应：<i><b>[{}]</b></i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">POST</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/register/access]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">公开</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[{ captchaId, captcha }]</b></i>；颁发令牌（Cookie）</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">GET</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/register/access]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">公开</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">响应：<i><b>[{ valid }]</b></i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">POST</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/register]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">公开 + 通行令牌</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[{ title, firstName, lastName, login, password, confirmation }]</b></i>；201</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">GET</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/my-area]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">USER</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">响应：<i><b>[{ patient, appointments }]</b></i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">GET</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/my-account]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">USER</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">响应：<i><b>[{ title, firstName, lastName, login, version }]</b></i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">PUT</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/my-account]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">USER</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[{ title, firstName, lastName, login, password?, confirmation?, currentPassword, version }]</b></i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">DELETE</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[/api/my-account]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">USER</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[{ currentPassword }]</b></i>；删除账户及其预约</div></td></tr></table>
+
+<p>日程条目（[GET /api/schedule]）描述一个时间段，以及已登录用户被授权对它执行的操作：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>{ "id": 3, "startHour": 8, "startMinute": 40, "endHour": 9, "endMinute": 0,
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>  "free": false,
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>  "patient": { "title": "Mme", "firstName": "Alice", "lastName": "DURAND" },
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>  "mine": false, "bookable": false, "appointmentId": 2 }
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><strong><em>[free]</em></strong>：该时间段在当天是否可用？</li>
+<li><strong><em>[patient]</em></strong>：该预约的患者。对于已登录的患者，该值等于 <strong><em>[null]，</em></strong>但他们自己的预约除外：绝不会发送其他患者的姓名；</li>
+<li><strong><em>[mine]</em></strong>：这是已登录患者自己的预约；</li>
+<li><strong><em>[bookable]</em></strong>：用户能否预订该时间段（可用、不在过去，并且对患者而言没有未来的预约）？</li>
+<li><strong><em>[appointmentId]</em></strong>：如果用户可以取消该预约，则会设置该值。</li>
+</ul>
+<p>服务器负责决定，客户端负责显示。即使客户端作弊（在不应显示时显示“预订”按钮），服务器在预订时也会再次核实一切。</p>
+<h2 id="76-curl-api">7.6. <span style="color: #2e74b5">使用 curl 查询 API</span></h2>
+<p>服务器上的 <strong><em>[curl]</em></strong> 文件夹包含本章使用的 JSON 请求体，每个请求一个文件。例如 <strong><em>[curl/login-admin.json]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span><span class="w"> </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span><span class="w"> </span><span class="nt">"captchaId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-"</span><span class="p">,</span><span class="w"> </span><span class="nt">"captcha"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>命令在打开于 <strong><em>[rdvmedecins-nestjs-json]</em></strong> 目录的控制台中输入。<em>[curl]</em> 的一些选项：</p>
+<ul>
+<li><strong><em>[-i]</em></strong>：同时显示响应头；<strong><em>[-s]</em></strong>：不显示进度条；</li>
+<li><strong><em>[--json @file]</em></strong>：以 POST 方式发送文件内容，并带有请求头 <strong><em>[Content-Type: application/json]</em></strong> （curl 7.82 及更高版本；如果是旧版本，请使用 <strong><em>[-H &quot;Content-Type: application/json&quot; -d @file]</em></strong>）；</li>
+<li><strong><em>[-X PUT]</em></strong>、<strong><em>[-X DELETE]</em></strong>：HTTP 方法；</li>
+<li><strong><em>[-c cookies.txt]</em></strong>：将收到的 Cookie 保存到该文件；<strong><em>[-b cookies.txt]</em></strong>：将它们发回。<em>[curl]</em> 就是这样在一条命令到下一条命令之间“保持登录”的，和浏览器的做法一样。</li>
+</ul>
+<p>在 <em>[PowerShell]</em> 下，必须输入 <strong><em>[curl.exe]</em></strong> 而不是 <strong><em>[curl]</em></strong> （在那里它指的是另一条命令）。为便于阅读，本文档对较长的 JSON 响应做了格式化，并去掉了 <strong><em>[Date]</em></strong>、<strong><em>[ETag]</em></strong>、<strong><em>[Connection]、</em></strong>和 <strong><em>[Keep-Alive]</em></strong> 这几个响应头。</p>
+<h3 id="761">7.6.1. <span style="color: #1f4d78">登录</span></h3>
+<p>首先是验证码（CAPTCHA，图像已裁剪）：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span>
+<span class="normal"><a href="#__codelineno-9-5">5</a></span>
+<span class="normal"><a href="#__codelineno-9-6">6</a></span>
+<span class="normal"><a href="#__codelineno-9-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>$ curl -i http://localhost:8080/api/captcha
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>HTTP/1.1 200 OK
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>Cache-Control: no-store
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a>Content-Length: 11304
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a>{"id": "e33886ae-1a8b-4302-8cbc-cd7015e82f1f", "svg": "&lt;svg xmlns=\"http://www.w3.org/2000/svg\" width=\"150..."}
+</code></pre></div></td></tr></table></div>
+<p>没有令牌时，受保护的 URL 会返回 401 响应：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span>
+<span class="normal"><a href="#__codelineno-10-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>$ curl -i http://localhost:8080/api/doctors
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>HTTP/1.1 401 Unauthorized
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a>Content-Length: 47
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a>{"statusCode": 401, "key": "ERRORS.AUTH_REQUIRED"}
+</code></pre></div></td></tr></table></div>
+<p>错误的验证码，随后是错误的密码：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">5</a></span>
+<span class="normal"><a href="#__codelineno-11-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>$ curl -i --json @curl/login-wrong-captcha.json http://localhost:8080/api/auth/login
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>HTTP/1.1 400 Bad Request
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>Content-Length: 91
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>{"statusCode": 400, "key": "ERRORS.WRONG_CAPTCHA", "fields": {"captcha": "ERRORS.WRONG_CAPTCHA"}}
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span>
+<span class="normal"><a href="#__codelineno-12-4">4</a></span>
+<span class="normal"><a href="#__codelineno-12-5">5</a></span>
+<span class="normal"><a href="#__codelineno-12-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>$ curl -i --json @curl/login-wrong-password.json http://localhost:8080/api/auth/login
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>HTTP/1.1 401 Unauthorized
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a>Content-Length: 38
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a>{"statusCode": 401, "key": "LOGIN.ERROR"}
+</code></pre></div></td></tr></table></div>
+<p>登录成功会设置 Cookie，<em>[curl]</em> 将其存储在 <strong><em>[cookies.txt]</em></strong> 中：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span>
+<span class="normal"><a href="#__codelineno-13-6">6</a></span>
+<span class="normal"><a href="#__codelineno-13-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>$ curl -i -c cookies.txt --json @curl/login-admin.json http://localhost:8080/api/auth/login
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>HTTP/1.1 200 OK
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>Set-Cookie: rdvmedecins_jwt=eyJhbGciOiJIUzI1NiIs...; Max-Age=7200; Path=/api; Expires=Mon, 28 Sep 2026 12:49:12 GMT; HttpOnly; SameSite=Strict
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a>Content-Length: 55
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a>
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a>{"login": "admin", "name": "Administrator", "role": "ADMIN"}
+</code></pre></div></td></tr></table></div>
+<p>有了这个 Cookie，服务器就知道我们是谁：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span>
+<span class="normal"><a href="#__codelineno-14-5">5</a></span>
+<span class="normal"><a href="#__codelineno-14-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>$ curl -i -b cookies.txt http://localhost:8080/api/auth/me
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>HTTP/1.1 200 OK
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>Content-Length: 55
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a>
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a>{"login": "admin", "name": "Administrator", "role": "ADMIN"}
+</code></pre></div></td></tr></table></div>
+<p>伪造的（或已过期的）令牌会导致会话过期，服务器会指示浏览器删除该 Cookie：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span>
+<span class="normal"><a href="#__codelineno-15-5">5</a></span>
+<span class="normal"><a href="#__codelineno-15-6">6</a></span>
+<span class="normal"><a href="#__codelineno-15-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>$ curl -i -b "rdvmedecins_jwt=abc.def.ghi" http://localhost:8080/api/auth/me
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>HTTP/1.1 401 Unauthorized
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a>Set-Cookie: rdvmedecins_jwt=; Path=/api; Expires=Thu, 01 Jan 1970 00:00:00 GMT
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a>Content-Length: 49
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a>
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a>{"statusCode": 401, "key": "ERRORS.SESSION_EXPIRED"}
+</code></pre></div></td></tr></table></div>
+<h3 id="762">7.6.2. <span style="color: #1f4d78">医生、客户、日程</span></h3>
+<p>ADMIN 看到的医生列表（含登录名）：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-16-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-16-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-16-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-16-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-16-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-16-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-16-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>$ curl -i -b cookies.txt http://localhost:8080/api/doctors
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a>HTTP/1.1 200 OK
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a>Content-Length: 282
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a>
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a>[
+<a id="__codelineno-16-7" name="__codelineno-16-7"></a>  {"id": 3, "version": 0, "title": "Melle", "firstName": "Sophie", "lastName": "DUPONT", "login": "dupont"},
+<a id="__codelineno-16-8" name="__codelineno-16-8"></a>  {"id": 1, "version": 0, "title": "Mme", "firstName": "Marie", "lastName": "PELISSIER", "login": "pelissier"},
+<a id="__codelineno-16-9" name="__codelineno-16-9"></a>  {"id": 2, "version": 0, "title": "Mr", "firstName": "Paul", "lastName": "TATOU", "login": "tatou"}
+<a id="__codelineno-16-10" name="__codelineno-16-10"></a>]
+</code></pre></div></td></tr></table></div>
+<p>PELISSIER 医生 2030 年 1 月 15 日的日程：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-17-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-17-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-17-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-17-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-17-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-17-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-17-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-17-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-17-10">10</a></span>
+<span class="normal"><a href="#__codelineno-17-11">11</a></span>
+<span class="normal"><a href="#__codelineno-17-12">12</a></span>
+<span class="normal"><a href="#__codelineno-17-13">13</a></span>
+<span class="normal"><a href="#__codelineno-17-14">14</a></span>
+<span class="normal"><a href="#__codelineno-17-15">15</a></span>
+<span class="normal"><a href="#__codelineno-17-16">16</a></span>
+<span class="normal"><a href="#__codelineno-17-17">17</a></span>
+<span class="normal"><a href="#__codelineno-17-18">18</a></span>
+<span class="normal"><a href="#__codelineno-17-19">19</a></span>
+<span class="normal"><a href="#__codelineno-17-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>$ curl -s -b cookies.txt "http://localhost:8080/api/schedule?doctorId=1&amp;day=2030-01-15"
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a>{
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a>  "doctor": {"id": 1, "version": 0, "title": "Mme", "firstName": "Marie", "lastName": "PELISSIER"},
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a>  "day": "2030-01-15",
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a>  "slots": [
+<a id="__codelineno-17-6" name="__codelineno-17-6"></a>    {"id": 1, "startHour": 8, "startMinute": 0, "endHour": 8, "endMinute": 20, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-17-7" name="__codelineno-17-7"></a>    {"id": 2, "startHour": 8, "startMinute": 20, "endHour": 8, "endMinute": 40, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-17-8" name="__codelineno-17-8"></a>    {"id": 3, "startHour": 8, "startMinute": 40, "endHour": 9, "endMinute": 0, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-17-9" name="__codelineno-17-9"></a>    {"id": 4, "startHour": 9, "startMinute": 0, "endHour": 9, "endMinute": 20, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-17-10" name="__codelineno-17-10"></a>    {"id": 5, "startHour": 9, "startMinute": 20, "endHour": 9, "endMinute": 40, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-17-11" name="__codelineno-17-11"></a>    {"id": 6, "startHour": 9, "startMinute": 40, "endHour": 10, "endMinute": 0, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-17-12" name="__codelineno-17-12"></a>    {"id": 7, "startHour": 10, "startMinute": 0, "endHour": 10, "endMinute": 20, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-17-13" name="__codelineno-17-13"></a>    {"id": 8, "startHour": 10, "startMinute": 20, "endHour": 10, "endMinute": 40, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-17-14" name="__codelineno-17-14"></a>    {"id": 9, "startHour": 10, "startMinute": 40, "endHour": 11, "endMinute": 0, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-17-15" name="__codelineno-17-15"></a>    {"id": 10, "startHour": 11, "startMinute": 0, "endHour": 11, "endMinute": 20, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-17-16" name="__codelineno-17-16"></a>    {"id": 11, "startHour": 11, "startMinute": 20, "endHour": 11, "endMinute": 40, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-17-17" name="__codelineno-17-17"></a>    {"id": 12, "startHour": 11, "startMinute": 40, "endHour": 12, "endMinute": 0, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null}
+<a id="__codelineno-17-18" name="__codelineno-17-18"></a>  ],
+<a id="__codelineno-17-19" name="__codelineno-17-19"></a>  "info": null
+<a id="__codelineno-17-20" name="__codelineno-17-20"></a>}
+</code></pre></div></td></tr></table></div>
+<p>不存在的日期：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span>
+<span class="normal"><a href="#__codelineno-18-3">3</a></span>
+<span class="normal"><a href="#__codelineno-18-4">4</a></span>
+<span class="normal"><a href="#__codelineno-18-5">5</a></span>
+<span class="normal"><a href="#__codelineno-18-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>$ curl -i -b cookies.txt "http://localhost:8080/api/schedule?doctorId=1&amp;day=2030-02-30"
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a>HTTP/1.1 400 Bad Request
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a>Content-Length: 46
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a>
+<a id="__codelineno-18-6" name="__codelineno-18-6"></a>{"statusCode": 400, "key": "ERRORS.INVALID_DATE"}
+</code></pre></div></td></tr></table></div>
+<h3 id="763">7.6.3. <span style="color: #1f4d78">预约</span></h3>
+<p>ADMIN 为 2 号患者（Alice DURAND）预订 3 号时间段。请求体：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">"day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2030-01-15"</span><span class="p">,</span><span class="w"> </span><span class="nt">"slotId"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nt">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span>
+<span class="normal"><a href="#__codelineno-20-2">2</a></span>
+<span class="normal"><a href="#__codelineno-20-3">3</a></span>
+<span class="normal"><a href="#__codelineno-20-4">4</a></span>
+<span class="normal"><a href="#__codelineno-20-5">5</a></span>
+<span class="normal"><a href="#__codelineno-20-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>$ curl -i -b cookies.txt --json @curl/appointment-admin.json http://localhost:8080/api/appointments
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a>HTTP/1.1 201 Created
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a>Content-Length: 51
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a>
+<a id="__codelineno-20-6" name="__codelineno-20-6"></a>{"id": 2, "day": "2030-01-15", "slotId": 3, "clientId": 2}
+</code></pre></div></td></tr></table></div>
+<p>日程现在显示了这个预约，以及患者的姓名和取消它的方式（[appointmentId]）：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-21-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-21-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-21-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-21-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-21-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-21-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-21-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-21-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-21-10">10</a></span>
+<span class="normal"><a href="#__codelineno-21-11">11</a></span>
+<span class="normal"><a href="#__codelineno-21-12">12</a></span>
+<span class="normal"><a href="#__codelineno-21-13">13</a></span>
+<span class="normal"><a href="#__codelineno-21-14">14</a></span>
+<span class="normal"><a href="#__codelineno-21-15">15</a></span>
+<span class="normal"><a href="#__codelineno-21-16">16</a></span>
+<span class="normal"><a href="#__codelineno-21-17">17</a></span>
+<span class="normal"><a href="#__codelineno-21-18">18</a></span>
+<span class="normal"><a href="#__codelineno-21-19">19</a></span>
+<span class="normal"><a href="#__codelineno-21-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a>$ curl -s -b cookies.txt "http://localhost:8080/api/schedule?doctorId=1&amp;day=2030-01-15"
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a>{
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a>  "doctor": {"id": 1, "version": 0, "title": "Mme", "firstName": "Marie", "lastName": "PELISSIER"},
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a>  "day": "2030-01-15",
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a>  "slots": [
+<a id="__codelineno-21-6" name="__codelineno-21-6"></a>    {"id": 1, "startHour": 8, "startMinute": 0, "endHour": 8, "endMinute": 20, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-21-7" name="__codelineno-21-7"></a>    {"id": 2, "startHour": 8, "startMinute": 20, "endHour": 8, "endMinute": 40, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-21-8" name="__codelineno-21-8"></a>    {"id": 3, "startHour": 8, "startMinute": 40, "endHour": 9, "endMinute": 0, "free": false, "patient": {"title": "Mme", "firstName": "Alice", "lastName": "DURAND"}, "mine": false, "bookable": false, "appointmentId": 2},
+<a id="__codelineno-21-9" name="__codelineno-21-9"></a>    {"id": 4, "startHour": 9, "startMinute": 0, "endHour": 9, "endMinute": 20, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-21-10" name="__codelineno-21-10"></a>    {"id": 5, "startHour": 9, "startMinute": 20, "endHour": 9, "endMinute": 40, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-21-11" name="__codelineno-21-11"></a>    {"id": 6, "startHour": 9, "startMinute": 40, "endHour": 10, "endMinute": 0, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-21-12" name="__codelineno-21-12"></a>    {"id": 7, "startHour": 10, "startMinute": 0, "endHour": 10, "endMinute": 20, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-21-13" name="__codelineno-21-13"></a>    {"id": 8, "startHour": 10, "startMinute": 20, "endHour": 10, "endMinute": 40, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-21-14" name="__codelineno-21-14"></a>    {"id": 9, "startHour": 10, "startMinute": 40, "endHour": 11, "endMinute": 0, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-21-15" name="__codelineno-21-15"></a>    {"id": 10, "startHour": 11, "startMinute": 0, "endHour": 11, "endMinute": 20, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-21-16" name="__codelineno-21-16"></a>    {"id": 11, "startHour": 11, "startMinute": 20, "endHour": 11, "endMinute": 40, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-21-17" name="__codelineno-21-17"></a>    {"id": 12, "startHour": 11, "startMinute": 40, "endHour": 12, "endMinute": 0, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null}
+<a id="__codelineno-21-18" name="__codelineno-21-18"></a>  ],
+<a id="__codelineno-21-19" name="__codelineno-21-19"></a>  "info": null
+<a id="__codelineno-21-20" name="__codelineno-21-20"></a>}
+</code></pre></div></td></tr></table></div>
+<p>再试一次：该患者已有一个未来的预约。过去的预约同样会被拒绝：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span>
+<span class="normal"><a href="#__codelineno-22-2">2</a></span>
+<span class="normal"><a href="#__codelineno-22-3">3</a></span>
+<span class="normal"><a href="#__codelineno-22-4">4</a></span>
+<span class="normal"><a href="#__codelineno-22-5">5</a></span>
+<span class="normal"><a href="#__codelineno-22-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a>$ curl -i -b cookies.txt --json @curl/appointment-admin.json http://localhost:8080/api/appointments
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a>HTTP/1.1 409 Conflict
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a>Content-Length: 66
+<a id="__codelineno-22-5" name="__codelineno-22-5"></a>
+<a id="__codelineno-22-6" name="__codelineno-22-6"></a>{"statusCode": 409, "key": "ERRORS.PATIENT_HAS_UPCOMING_APPOINTMENT"}
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span>
+<span class="normal"><a href="#__codelineno-23-2">2</a></span>
+<span class="normal"><a href="#__codelineno-23-3">3</a></span>
+<span class="normal"><a href="#__codelineno-23-4">4</a></span>
+<span class="normal"><a href="#__codelineno-23-5">5</a></span>
+<span class="normal"><a href="#__codelineno-23-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a>$ curl -i -b cookies.txt --json @curl/appointment-past.json http://localhost:8080/api/appointments
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a>HTTP/1.1 409 Conflict
+<a id="__codelineno-23-3" name="__codelineno-23-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a>Content-Length: 43
+<a id="__codelineno-23-5" name="__codelineno-23-5"></a>
+<a id="__codelineno-23-6" name="__codelineno-23-6"></a>{"statusCode": 409, "key": "ERRORS.PAST_DATE"}
+</code></pre></div></td></tr></table></div>
+<p>标准的 HTML 表单（此处用 <strong><em>[-d]</em></strong> 模拟，它发送 <strong><em>[application/x-www-form-urlencoded]</em></strong>）会被拒绝：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span>
+<span class="normal"><a href="#__codelineno-24-2">2</a></span>
+<span class="normal"><a href="#__codelineno-24-3">3</a></span>
+<span class="normal"><a href="#__codelineno-24-4">4</a></span>
+<span class="normal"><a href="#__codelineno-24-5">5</a></span>
+<span class="normal"><a href="#__codelineno-24-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a>$ curl -i -b cookies.txt -d "day=2030-01-15&amp;slotId=4&amp;clientId=2" http://localhost:8080/api/appointments
+<a id="__codelineno-24-2" name="__codelineno-24-2"></a>HTTP/1.1 415 Unsupported Media Type
+<a id="__codelineno-24-3" name="__codelineno-24-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-24-4" name="__codelineno-24-4"></a>Content-Length: 47
+<a id="__codelineno-24-5" name="__codelineno-24-5"></a>
+<a id="__codelineno-24-6" name="__codelineno-24-6"></a>{"statusCode": 415, "key": "ERRORS.JSON_REQUIRED"}
+</code></pre></div></td></tr></table></div>
+<h3 id="764">7.6.4. <span style="color: #1f4d78">患者的视角</span></h3>
+<p>先注销，然后以 <strong><em>[martin]</em></strong> 身份登录：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
+<span class="normal"><a href="#__codelineno-25-2">2</a></span>
+<span class="normal"><a href="#__codelineno-25-3">3</a></span>
+<span class="normal"><a href="#__codelineno-25-4">4</a></span>
+<span class="normal"><a href="#__codelineno-25-5">5</a></span>
+<span class="normal"><a href="#__codelineno-25-6">6</a></span>
+<span class="normal"><a href="#__codelineno-25-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a>$ curl -i -b cookies.txt -c cookies.txt --json @curl/empty.json http://localhost:8080/api/auth/logout
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a>HTTP/1.1 200 OK
+<a id="__codelineno-25-3" name="__codelineno-25-3"></a>Set-Cookie: rdvmedecins_jwt=; Path=/api; Expires=Thu, 01 Jan 1970 00:00:00 GMT
+<a id="__codelineno-25-4" name="__codelineno-25-4"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-25-5" name="__codelineno-25-5"></a>Content-Length: 2
+<a id="__codelineno-25-6" name="__codelineno-25-6"></a>
+<a id="__codelineno-25-7" name="__codelineno-25-7"></a>{}
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span>
+<span class="normal"><a href="#__codelineno-26-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a>$ curl -s -c cookies-martin.txt --json @curl/login-martin.json http://localhost:8080/api/auth/login
+<a id="__codelineno-26-2" name="__codelineno-26-2"></a>{"login": "martin", "name": "Jean MARTIN", "role": "USER"}
+</code></pre></div></td></tr></table></div>
+<p>患者看到的同一份日程：3 号时间段已被占用（<strong><em>[&quot;free&quot;: false]</em></strong>），但 <strong><em>[&quot;patient&quot;]</em></strong> 等同于 <strong><em>[null]</em></strong>：没有发送 Alice 的姓氏 DURAND：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-27-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-27-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-27-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-27-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-27-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-27-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-27-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-27-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-27-10">10</a></span>
+<span class="normal"><a href="#__codelineno-27-11">11</a></span>
+<span class="normal"><a href="#__codelineno-27-12">12</a></span>
+<span class="normal"><a href="#__codelineno-27-13">13</a></span>
+<span class="normal"><a href="#__codelineno-27-14">14</a></span>
+<span class="normal"><a href="#__codelineno-27-15">15</a></span>
+<span class="normal"><a href="#__codelineno-27-16">16</a></span>
+<span class="normal"><a href="#__codelineno-27-17">17</a></span>
+<span class="normal"><a href="#__codelineno-27-18">18</a></span>
+<span class="normal"><a href="#__codelineno-27-19">19</a></span>
+<span class="normal"><a href="#__codelineno-27-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a>$ curl -s -b cookies-martin.txt "http://localhost:8080/api/schedule?doctorId=1&amp;day=2030-01-15"
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a>{
+<a id="__codelineno-27-3" name="__codelineno-27-3"></a>  "doctor": {"id": 1, "version": 0, "title": "Mme", "firstName": "Marie", "lastName": "PELISSIER"},
+<a id="__codelineno-27-4" name="__codelineno-27-4"></a>  "day": "2030-01-15",
+<a id="__codelineno-27-5" name="__codelineno-27-5"></a>  "slots": [
+<a id="__codelineno-27-6" name="__codelineno-27-6"></a>    {"id": 1, "startHour": 8, "startMinute": 0, "endHour": 8, "endMinute": 20, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-27-7" name="__codelineno-27-7"></a>    {"id": 2, "startHour": 8, "startMinute": 20, "endHour": 8, "endMinute": 40, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-27-8" name="__codelineno-27-8"></a>    {"id": 3, "startHour": 8, "startMinute": 40, "endHour": 9, "endMinute": 0, "free": false, "patient": null, "mine": false, "bookable": false, "appointmentId": null},
+<a id="__codelineno-27-9" name="__codelineno-27-9"></a>    {"id": 4, "startHour": 9, "startMinute": 0, "endHour": 9, "endMinute": 20, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-27-10" name="__codelineno-27-10"></a>    {"id": 5, "startHour": 9, "startMinute": 20, "endHour": 9, "endMinute": 40, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-27-11" name="__codelineno-27-11"></a>    {"id": 6, "startHour": 9, "startMinute": 40, "endHour": 10, "endMinute": 0, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-27-12" name="__codelineno-27-12"></a>    {"id": 7, "startHour": 10, "startMinute": 0, "endHour": 10, "endMinute": 20, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-27-13" name="__codelineno-27-13"></a>    {"id": 8, "startHour": 10, "startMinute": 20, "endHour": 10, "endMinute": 40, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-27-14" name="__codelineno-27-14"></a>    {"id": 9, "startHour": 10, "startMinute": 40, "endHour": 11, "endMinute": 0, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-27-15" name="__codelineno-27-15"></a>    {"id": 10, "startHour": 11, "startMinute": 0, "endHour": 11, "endMinute": 20, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-27-16" name="__codelineno-27-16"></a>    {"id": 11, "startHour": 11, "startMinute": 20, "endHour": 11, "endMinute": 40, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-27-17" name="__codelineno-27-17"></a>    {"id": 12, "startHour": 11, "startMinute": 40, "endHour": 12, "endMinute": 0, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null}
+<a id="__codelineno-27-18" name="__codelineno-27-18"></a>  ],
+<a id="__codelineno-27-19" name="__codelineno-27-19"></a>  "info": null
+<a id="__codelineno-27-20" name="__codelineno-27-20"></a>}
+</code></pre></div></td></tr></table></div>
+<p>患者无权访问客户列表：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
+<span class="normal"><a href="#__codelineno-28-2">2</a></span>
+<span class="normal"><a href="#__codelineno-28-3">3</a></span>
+<span class="normal"><a href="#__codelineno-28-4">4</a></span>
+<span class="normal"><a href="#__codelineno-28-5">5</a></span>
+<span class="normal"><a href="#__codelineno-28-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a>$ curl -i -b cookies-martin.txt http://localhost:8080/api/clients
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a>HTTP/1.1 403 Forbidden
+<a id="__codelineno-28-3" name="__codelineno-28-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-28-4" name="__codelineno-28-4"></a>Content-Length: 43
+<a id="__codelineno-28-5" name="__codelineno-28-5"></a>
+<a id="__codelineno-28-6" name="__codelineno-28-6"></a>{"statusCode": 403, "key": "ERRORS.FORBIDDEN"}
+</code></pre></div></td></tr></table></div>
+<p>他为自己预订（请求体不包含 <strong><em>[clientId]</em></strong>），一次成功，第二次则被拒绝：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">"day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2030-01-15"</span><span class="p">,</span><span class="w"> </span><span class="nt">"slotId"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span>
+<span class="normal"><a href="#__codelineno-30-2">2</a></span>
+<span class="normal"><a href="#__codelineno-30-3">3</a></span>
+<span class="normal"><a href="#__codelineno-30-4">4</a></span>
+<span class="normal"><a href="#__codelineno-30-5">5</a></span>
+<span class="normal"><a href="#__codelineno-30-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a>$ curl -i -b cookies-martin.txt --json @curl/appointment-martin.json http://localhost:8080/api/appointments
+<a id="__codelineno-30-2" name="__codelineno-30-2"></a>HTTP/1.1 201 Created
+<a id="__codelineno-30-3" name="__codelineno-30-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-30-4" name="__codelineno-30-4"></a>Content-Length: 51
+<a id="__codelineno-30-5" name="__codelineno-30-5"></a>
+<a id="__codelineno-30-6" name="__codelineno-30-6"></a>{"id": 3, "day": "2030-01-15", "slotId": 5, "clientId": 1}
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span>
+<span class="normal"><a href="#__codelineno-31-2">2</a></span>
+<span class="normal"><a href="#__codelineno-31-3">3</a></span>
+<span class="normal"><a href="#__codelineno-31-4">4</a></span>
+<span class="normal"><a href="#__codelineno-31-5">5</a></span>
+<span class="normal"><a href="#__codelineno-31-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a>$ curl -i -b cookies-martin.txt --json @curl/appointment-martin-2.json http://localhost:8080/api/appointments
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a>HTTP/1.1 409 Conflict
+<a id="__codelineno-31-3" name="__codelineno-31-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-31-4" name="__codelineno-31-4"></a>Content-Length: 55
+<a id="__codelineno-31-5" name="__codelineno-31-5"></a>
+<a id="__codelineno-31-6" name="__codelineno-31-6"></a>{"statusCode": 409, "key": "SCHEDULE.ALREADY_BOOKED_INFO"}
+</code></pre></div></td></tr></table></div>
+<p>他的区域：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-32-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-32-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-32-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-32-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-32-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-32-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-32-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-32-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-32-10">10</a></span>
+<span class="normal"><a href="#__codelineno-32-11">11</a></span>
+<span class="normal"><a href="#__codelineno-32-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a>$ curl -s -b cookies-martin.txt http://localhost:8080/api/my-area
+<a id="__codelineno-32-2" name="__codelineno-32-2"></a>{
+<a id="__codelineno-32-3" name="__codelineno-32-3"></a>  "patient": {"title": "Mr", "firstName": "Jean", "lastName": "MARTIN"},
+<a id="__codelineno-32-4" name="__codelineno-32-4"></a>  "appointments": [
+<a id="__codelineno-32-5" name="__codelineno-32-5"></a>    {
+<a id="__codelineno-32-6" name="__codelineno-32-6"></a>      "id": 3,
+<a id="__codelineno-32-7" name="__codelineno-32-7"></a>      "day": "2030-01-15",
+<a id="__codelineno-32-8" name="__codelineno-32-8"></a>      "slot": {"id": 5, "startHour": 9, "startMinute": 20, "endHour": 9, "endMinute": 40},
+<a id="__codelineno-32-9" name="__codelineno-32-9"></a>      "doctor": {"id": 1, "version": 0, "title": "Mme", "firstName": "Marie", "lastName": "PELISSIER"}
+<a id="__codelineno-32-10" name="__codelineno-32-10"></a>    }
+<a id="__codelineno-32-11" name="__codelineno-32-11"></a>  ]
+<a id="__codelineno-32-12" name="__codelineno-32-12"></a>}
+</code></pre></div></td></tr></table></div>
+<p>他无法取消其他患者的预约。服务器会返回“未找到”，就像该预约不存在一样：它不会泄露任何关于其他患者预约的信息：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-33-1">1</a></span>
+<span class="normal"><a href="#__codelineno-33-2">2</a></span>
+<span class="normal"><a href="#__codelineno-33-3">3</a></span>
+<span class="normal"><a href="#__codelineno-33-4">4</a></span>
+<span class="normal"><a href="#__codelineno-33-5">5</a></span>
+<span class="normal"><a href="#__codelineno-33-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1"></a>$ curl -i -b cookies-martin.txt -X DELETE http://localhost:8080/api/appointments/2
+<a id="__codelineno-33-2" name="__codelineno-33-2"></a>HTTP/1.1 404 Not Found
+<a id="__codelineno-33-3" name="__codelineno-33-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-33-4" name="__codelineno-33-4"></a>Content-Length: 55
+<a id="__codelineno-33-5" name="__codelineno-33-5"></a>
+<a id="__codelineno-33-6" name="__codelineno-33-6"></a>{"statusCode": 404, "key": "ERRORS.APPOINTMENT_NOT_FOUND"}
+</code></pre></div></td></tr></table></div>
+<p>他自己的预约则可以：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-34-1">1</a></span>
+<span class="normal"><a href="#__codelineno-34-2">2</a></span>
+<span class="normal"><a href="#__codelineno-34-3">3</a></span>
+<span class="normal"><a href="#__codelineno-34-4">4</a></span>
+<span class="normal"><a href="#__codelineno-34-5">5</a></span>
+<span class="normal"><a href="#__codelineno-34-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1"></a>$ curl -i -b cookies-martin.txt -X DELETE http://localhost:8080/api/appointments/3
+<a id="__codelineno-34-2" name="__codelineno-34-2"></a>HTTP/1.1 200 OK
+<a id="__codelineno-34-3" name="__codelineno-34-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-34-4" name="__codelineno-34-4"></a>Content-Length: 2
+<a id="__codelineno-34-5" name="__codelineno-34-5"></a>
+<a id="__codelineno-34-6" name="__codelineno-34-6"></a>{}
+</code></pre></div></td></tr></table></div>
+<h3 id="765">7.6.5. <span style="color: #1f4d78">医生的视角</span></h3>
+<p>不带 [doctorId] 时，已登录的医生会收到他自己的日程，其中包含所有姓名：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-35-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-35-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-35-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-35-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-35-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-35-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-35-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-35-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-35-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-35-10">10</a></span>
+<span class="normal"><a href="#__codelineno-35-11">11</a></span>
+<span class="normal"><a href="#__codelineno-35-12">12</a></span>
+<span class="normal"><a href="#__codelineno-35-13">13</a></span>
+<span class="normal"><a href="#__codelineno-35-14">14</a></span>
+<span class="normal"><a href="#__codelineno-35-15">15</a></span>
+<span class="normal"><a href="#__codelineno-35-16">16</a></span>
+<span class="normal"><a href="#__codelineno-35-17">17</a></span>
+<span class="normal"><a href="#__codelineno-35-18">18</a></span>
+<span class="normal"><a href="#__codelineno-35-19">19</a></span>
+<span class="normal"><a href="#__codelineno-35-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1"></a>$ curl -s -b cookies-pelissier.txt "http://localhost:8080/api/schedule?day=2030-01-15"
+<a id="__codelineno-35-2" name="__codelineno-35-2"></a>{
+<a id="__codelineno-35-3" name="__codelineno-35-3"></a>  "doctor": {"id": 1, "version": 0, "title": "Mme", "firstName": "Marie", "lastName": "PELISSIER"},
+<a id="__codelineno-35-4" name="__codelineno-35-4"></a>  "day": "2030-01-15",
+<a id="__codelineno-35-5" name="__codelineno-35-5"></a>  "slots": [
+<a id="__codelineno-35-6" name="__codelineno-35-6"></a>    {"id": 1, "startHour": 8, "startMinute": 0, "endHour": 8, "endMinute": 20, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-35-7" name="__codelineno-35-7"></a>    {"id": 2, "startHour": 8, "startMinute": 20, "endHour": 8, "endMinute": 40, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-35-8" name="__codelineno-35-8"></a>    {"id": 3, "startHour": 8, "startMinute": 40, "endHour": 9, "endMinute": 0, "free": false, "patient": {"title": "Mme", "firstName": "Alice", "lastName": "DURAND"}, "mine": false, "bookable": false, "appointmentId": 2},
+<a id="__codelineno-35-9" name="__codelineno-35-9"></a>    {"id": 4, "startHour": 9, "startMinute": 0, "endHour": 9, "endMinute": 20, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-35-10" name="__codelineno-35-10"></a>    {"id": 5, "startHour": 9, "startMinute": 20, "endHour": 9, "endMinute": 40, "free": false, "patient": {"title": "Mr", "firstName": "Jean", "lastName": "MARTIN"}, "mine": false, "bookable": false, "appointmentId": 3},
+<a id="__codelineno-35-11" name="__codelineno-35-11"></a>    {"id": 6, "startHour": 9, "startMinute": 40, "endHour": 10, "endMinute": 0, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-35-12" name="__codelineno-35-12"></a>    {"id": 7, "startHour": 10, "startMinute": 0, "endHour": 10, "endMinute": 20, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-35-13" name="__codelineno-35-13"></a>    {"id": 8, "startHour": 10, "startMinute": 20, "endHour": 10, "endMinute": 40, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-35-14" name="__codelineno-35-14"></a>    {"id": 9, "startHour": 10, "startMinute": 40, "endHour": 11, "endMinute": 0, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-35-15" name="__codelineno-35-15"></a>    {"id": 10, "startHour": 11, "startMinute": 0, "endHour": 11, "endMinute": 20, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-35-16" name="__codelineno-35-16"></a>    {"id": 11, "startHour": 11, "startMinute": 20, "endHour": 11, "endMinute": 40, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null},
+<a id="__codelineno-35-17" name="__codelineno-35-17"></a>    {"id": 12, "startHour": 11, "startMinute": 40, "endHour": 12, "endMinute": 0, "free": true, "patient": null, "mine": false, "bookable": true, "appointmentId": null}
+<a id="__codelineno-35-18" name="__codelineno-35-18"></a>  ],
+<a id="__codelineno-35-19" name="__codelineno-35-19"></a>  "info": null
+<a id="__codelineno-35-20" name="__codelineno-35-20"></a>}
+</code></pre></div></td></tr></table></div>
+<p>他不能管理医生：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-36-1">1</a></span>
+<span class="normal"><a href="#__codelineno-36-2">2</a></span>
+<span class="normal"><a href="#__codelineno-36-3">3</a></span>
+<span class="normal"><a href="#__codelineno-36-4">4</a></span>
+<span class="normal"><a href="#__codelineno-36-5">5</a></span>
+<span class="normal"><a href="#__codelineno-36-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1"></a>$ curl -i -b cookies-pelissier.txt --json @curl/doctor-add.json http://localhost:8080/api/doctors
+<a id="__codelineno-36-2" name="__codelineno-36-2"></a>HTTP/1.1 403 Forbidden
+<a id="__codelineno-36-3" name="__codelineno-36-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-36-4" name="__codelineno-36-4"></a>Content-Length: 43
+<a id="__codelineno-36-5" name="__codelineno-36-5"></a>
+<a id="__codelineno-36-6" name="__codelineno-36-6"></a>{"statusCode": 403, "key": "ERRORS.FORBIDDEN"}
+</code></pre></div></td></tr></table></div>
+<h3 id="766-admin">7.6.6. <span style="color: #1f4d78">管理医生和客户（ADMIN）</span></h3>
+<p>添加。如果缺少用户名，默认使用小写的姓名；密码即用户名：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-37-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mme"</span><span class="p">,</span><span class="w"> </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Claire"</span><span class="p">,</span><span class="w"> </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LEROY"</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-38-1">1</a></span>
+<span class="normal"><a href="#__codelineno-38-2">2</a></span>
+<span class="normal"><a href="#__codelineno-38-3">3</a></span>
+<span class="normal"><a href="#__codelineno-38-4">4</a></span>
+<span class="normal"><a href="#__codelineno-38-5">5</a></span>
+<span class="normal"><a href="#__codelineno-38-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1"></a>$ curl -i -b cookies.txt --json @curl/doctor-add.json http://localhost:8080/api/doctors
+<a id="__codelineno-38-2" name="__codelineno-38-2"></a>HTTP/1.1 201 Created
+<a id="__codelineno-38-3" name="__codelineno-38-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-38-4" name="__codelineno-38-4"></a>Content-Length: 90
+<a id="__codelineno-38-5" name="__codelineno-38-5"></a>
+<a id="__codelineno-38-6" name="__codelineno-38-6"></a>{"id": 4, "version": 1, "title": "Mme", "firstName": "Claire", "lastName": "LEROY", "login": "leroy"}
+</code></pre></div></td></tr></table></div>
+<p>无效的请求体：响应会列出每个字段的错误：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-39-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr"</span><span class="p">,</span><span class="w"> </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A-LAST-NAME-FAR-TOO-LONG-FOR-THE-DB"</span><span class="p">,</span><span class="w"> </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Claire L"</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-40-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-40-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-40-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-40-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-40-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-40-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-40-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-40-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-40-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-40-10">10</a></span>
+<span class="normal"><a href="#__codelineno-40-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1"></a>$ curl -i -b cookies.txt --json @curl/doctor-invalid.json http://localhost:8080/api/doctors
+<a id="__codelineno-40-2" name="__codelineno-40-2"></a>HTTP/1.1 400 Bad Request
+<a id="__codelineno-40-3" name="__codelineno-40-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-40-4" name="__codelineno-40-4"></a>Content-Length: 218
+<a id="__codelineno-40-5" name="__codelineno-40-5"></a>
+<a id="__codelineno-40-6" name="__codelineno-40-6"></a>{
+<a id="__codelineno-40-7" name="__codelineno-40-7"></a>  "statusCode": 400,
+<a id="__codelineno-40-8" name="__codelineno-40-8"></a>  "key": "ERRORS.INVALID_FORM",
+<a id="__codelineno-40-9" name="__codelineno-40-9"></a>  "params": {"min": "6"},
+<a id="__codelineno-40-10" name="__codelineno-40-10"></a>  "fields": {"login": "ERRORS.INVALID_LOGIN", "title": "ERRORS.INVALID_TITLE", "firstName": "ERRORS.FIRSTNAME_REQUIRED", "lastName": "ERRORS.LASTNAME_TOO_LONG"}
+<a id="__codelineno-40-11" name="__codelineno-40-11"></a>}
+</code></pre></div></td></tr></table></div>
+<p>同名情况：两个相关字段都会被标记：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-41-1">1</a></span>
+<span class="normal"><a href="#__codelineno-41-2">2</a></span>
+<span class="normal"><a href="#__codelineno-41-3">3</a></span>
+<span class="normal"><a href="#__codelineno-41-4">4</a></span>
+<span class="normal"><a href="#__codelineno-41-5">5</a></span>
+<span class="normal"><a href="#__codelineno-41-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1"></a>$ curl -i -b cookies.txt --json @curl/doctor-duplicate.json http://localhost:8080/api/doctors
+<a id="__codelineno-41-2" name="__codelineno-41-2"></a>HTTP/1.1 409 Conflict
+<a id="__codelineno-41-3" name="__codelineno-41-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-41-4" name="__codelineno-41-4"></a>Content-Length: 151
+<a id="__codelineno-41-5" name="__codelineno-41-5"></a>
+<a id="__codelineno-41-6" name="__codelineno-41-6"></a>{"statusCode": 409, "key": "ERRORS.DOCTOR_ALREADY_EXISTS", "fields": {"firstName": "ERRORS.DOCTOR_ALREADY_EXISTS", "lastName": "ERRORS.DOCTOR_ALREADY_EXISTS"}}
+</code></pre></div></td></tr></table></div>
+<p>修改。<strong><em>[version]</em></strong> 是从记录中读取的版本（此处为 1）：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-42-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mme"</span><span class="p">,</span><span class="w"> </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Claire"</span><span class="p">,</span><span class="w"> </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LEROY-MARTIN"</span><span class="p">,</span><span class="w"> </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-43-1">1</a></span>
+<span class="normal"><a href="#__codelineno-43-2">2</a></span>
+<span class="normal"><a href="#__codelineno-43-3">3</a></span>
+<span class="normal"><a href="#__codelineno-43-4">4</a></span>
+<span class="normal"><a href="#__codelineno-43-5">5</a></span>
+<span class="normal"><a href="#__codelineno-43-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1"></a>$ curl -i -b cookies.txt -X PUT --json @curl/doctor-edit.json http://localhost:8080/api/doctors/4
+<a id="__codelineno-43-2" name="__codelineno-43-2"></a>HTTP/1.1 200 OK
+<a id="__codelineno-43-3" name="__codelineno-43-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-43-4" name="__codelineno-43-4"></a>Content-Length: 97
+<a id="__codelineno-43-5" name="__codelineno-43-5"></a>
+<a id="__codelineno-43-6" name="__codelineno-43-6"></a>{"id": 4, "version": 2, "title": "Mme", "firstName": "Claire", "lastName": "LEROY-MARTIN", "login": "leroy"}
+</code></pre></div></td></tr></table></div>
+<p>记录现在是版本 2。如果再次提交同一修改（带有版本 1），就会覆盖已被他人修改过的记录：<strong>乐观锁</strong> 可以防止这种情况：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-44-1">1</a></span>
+<span class="normal"><a href="#__codelineno-44-2">2</a></span>
+<span class="normal"><a href="#__codelineno-44-3">3</a></span>
+<span class="normal"><a href="#__codelineno-44-4">4</a></span>
+<span class="normal"><a href="#__codelineno-44-5">5</a></span>
+<span class="normal"><a href="#__codelineno-44-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1"></a>$ curl -i -b cookies.txt -X PUT --json @curl/doctor-edit.json http://localhost:8080/api/doctors/4
+<a id="__codelineno-44-2" name="__codelineno-44-2"></a>HTTP/1.1 409 Conflict
+<a id="__codelineno-44-3" name="__codelineno-44-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-44-4" name="__codelineno-44-4"></a>Content-Length: 51
+<a id="__codelineno-44-5" name="__codelineno-44-5"></a>
+<a id="__codelineno-44-6" name="__codelineno-44-6"></a>{"statusCode": 409, "key": "ERRORS.CONCURRENT_UPDATE"}
+</code></pre></div></td></tr></table></div>
+<p>有预约的医生不能被删除；其他医生可以：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-45-1">1</a></span>
+<span class="normal"><a href="#__codelineno-45-2">2</a></span>
+<span class="normal"><a href="#__codelineno-45-3">3</a></span>
+<span class="normal"><a href="#__codelineno-45-4">4</a></span>
+<span class="normal"><a href="#__codelineno-45-5">5</a></span>
+<span class="normal"><a href="#__codelineno-45-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1"></a>$ curl -i -b cookies.txt -X DELETE http://localhost:8080/api/doctors/1
+<a id="__codelineno-45-2" name="__codelineno-45-2"></a>HTTP/1.1 409 Conflict
+<a id="__codelineno-45-3" name="__codelineno-45-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-45-4" name="__codelineno-45-4"></a>Content-Length: 57
+<a id="__codelineno-45-5" name="__codelineno-45-5"></a>
+<a id="__codelineno-45-6" name="__codelineno-45-6"></a>{"statusCode": 409, "key": "ERRORS.DOCTOR_HAS_APPOINTMENTS"}
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-46-1">1</a></span>
+<span class="normal"><a href="#__codelineno-46-2">2</a></span>
+<span class="normal"><a href="#__codelineno-46-3">3</a></span>
+<span class="normal"><a href="#__codelineno-46-4">4</a></span>
+<span class="normal"><a href="#__codelineno-46-5">5</a></span>
+<span class="normal"><a href="#__codelineno-46-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1"></a>$ curl -i -b cookies.txt -X DELETE http://localhost:8080/api/doctors/4
+<a id="__codelineno-46-2" name="__codelineno-46-2"></a>HTTP/1.1 200 OK
+<a id="__codelineno-46-3" name="__codelineno-46-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-46-4" name="__codelineno-46-4"></a>Content-Length: 2
+<a id="__codelineno-46-5" name="__codelineno-46-5"></a>
+<a id="__codelineno-46-6" name="__codelineno-46-6"></a>{}
+</code></pre></div></td></tr></table></div>
+<h3 id="767">7.6.7. <span style="color: #1f4d78">创建账户</span></h3>
+<p>没有通行码，就无法创建：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-47-1">1</a></span>
+<span class="normal"><a href="#__codelineno-47-2">2</a></span>
+<span class="normal"><a href="#__codelineno-47-3">3</a></span>
+<span class="normal"><a href="#__codelineno-47-4">4</a></span>
+<span class="normal"><a href="#__codelineno-47-5">5</a></span>
+<span class="normal"><a href="#__codelineno-47-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1"></a>$ curl -i --json @curl/registration.json http://localhost:8080/api/register
+<a id="__codelineno-47-2" name="__codelineno-47-2"></a>HTTP/1.1 403 Forbidden
+<a id="__codelineno-47-3" name="__codelineno-47-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-47-4" name="__codelineno-47-4"></a>Content-Length: 56
+<a id="__codelineno-47-5" name="__codelineno-47-5"></a>
+<a id="__codelineno-47-6" name="__codelineno-47-6"></a>{"statusCode": 403, "key": "ERRORS.CAPTCHA_BEFORE_ACCOUNT"}
+</code></pre></div></td></tr></table></div>
+<p>首先，你要解答一个验证码（CAPTCHA）；服务器会签发一个有效期为 15 分钟的令牌，存放在 Cookie 中：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-48-1">1</a></span>
+<span class="normal"><a href="#__codelineno-48-2">2</a></span>
+<span class="normal"><a href="#__codelineno-48-3">3</a></span>
+<span class="normal"><a href="#__codelineno-48-4">4</a></span>
+<span class="normal"><a href="#__codelineno-48-5">5</a></span>
+<span class="normal"><a href="#__codelineno-48-6">6</a></span>
+<span class="normal"><a href="#__codelineno-48-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1"></a>$ curl -i -c cookies-registration.txt --json @curl/captcha-test.json http://localhost:8080/api/register/access
+<a id="__codelineno-48-2" name="__codelineno-48-2"></a>HTTP/1.1 200 OK
+<a id="__codelineno-48-3" name="__codelineno-48-3"></a>Set-Cookie: rdvmedecins_registration=73a037d1-78f2-4e8e-a3a5-b6660a4f7fd5; Max-Age=900; Path=/api/register; Expires=Mon, 28 Sep 2026 11:04:12 GMT; HttpOnly; SameSite=Strict
+<a id="__codelineno-48-4" name="__codelineno-48-4"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-48-5" name="__codelineno-48-5"></a>Content-Length: 2
+<a id="__codelineno-48-6" name="__codelineno-48-6"></a>
+<a id="__codelineno-48-7" name="__codelineno-48-7"></a>{}
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-49-1">1</a></span>
+<span class="normal"><a href="#__codelineno-49-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1"></a>$ curl -s -b cookies-registration.txt http://localhost:8080/api/register/access
+<a id="__codelineno-49-2" name="__codelineno-49-2"></a>{"valid": true}
+</code></pre></div></td></tr></table></div>
+<p>确认密码必须与密码一致：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-50-1">1</a></span>
+<span class="normal"><a href="#__codelineno-50-2">2</a></span>
+<span class="normal"><a href="#__codelineno-50-3">3</a></span>
+<span class="normal"><a href="#__codelineno-50-4">4</a></span>
+<span class="normal"><a href="#__codelineno-50-5">5</a></span>
+<span class="normal"><a href="#__codelineno-50-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1"></a>$ curl -i -b cookies-registration.txt --json @curl/registration-confirmation.json http://localhost:8080/api/register
+<a id="__codelineno-50-2" name="__codelineno-50-2"></a>HTTP/1.1 400 Bad Request
+<a id="__codelineno-50-3" name="__codelineno-50-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-50-4" name="__codelineno-50-4"></a>Content-Length: 98
+<a id="__codelineno-50-5" name="__codelineno-50-5"></a>
+<a id="__codelineno-50-6" name="__codelineno-50-6"></a>{"statusCode": 400, "key": "ERRORS.INVALID_FORM", "fields": {"confirmation": "ERRORS.PASSWORDS_DIFFER"}}
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-51-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mme"</span><span class="p">,</span><span class="w"> </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Julie"</span><span class="p">,</span><span class="w"> </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BERNARD"</span><span class="p">,</span><span class="w"> </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jbernard"</span><span class="p">,</span><span class="w"> </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secret1"</span><span class="p">,</span><span class="w"> </span><span class="nt">"confirmation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secret1"</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-52-1">1</a></span>
+<span class="normal"><a href="#__codelineno-52-2">2</a></span>
+<span class="normal"><a href="#__codelineno-52-3">3</a></span>
+<span class="normal"><a href="#__codelineno-52-4">4</a></span>
+<span class="normal"><a href="#__codelineno-52-5">5</a></span>
+<span class="normal"><a href="#__codelineno-52-6">6</a></span>
+<span class="normal"><a href="#__codelineno-52-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1"></a>$ curl -i -b cookies-registration.txt -c cookies-registration.txt --json @curl/registration.json http://localhost:8080/api/register
+<a id="__codelineno-52-2" name="__codelineno-52-2"></a>HTTP/1.1 201 Created
+<a id="__codelineno-52-3" name="__codelineno-52-3"></a>Set-Cookie: rdvmedecins_registration=; Path=/api/register; Expires=Thu, 01 Jan 1970 00:00:00 GMT
+<a id="__codelineno-52-4" name="__codelineno-52-4"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-52-5" name="__codelineno-52-5"></a>Content-Length: 20
+<a id="__codelineno-52-6" name="__codelineno-52-6"></a>
+<a id="__codelineno-52-7" name="__codelineno-52-7"></a>{"login": "jbernard"}
+</code></pre></div></td></tr></table></div>
+<p>该通行码已被使用：不能再用它创建第二个账户：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-53-1">1</a></span>
+<span class="normal"><a href="#__codelineno-53-2">2</a></span>
+<span class="normal"><a href="#__codelineno-53-3">3</a></span>
+<span class="normal"><a href="#__codelineno-53-4">4</a></span>
+<span class="normal"><a href="#__codelineno-53-5">5</a></span>
+<span class="normal"><a href="#__codelineno-53-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1"></a>$ curl -i -b cookies-registration.txt --json @curl/registration.json http://localhost:8080/api/register
+<a id="__codelineno-53-2" name="__codelineno-53-2"></a>HTTP/1.1 403 Forbidden
+<a id="__codelineno-53-3" name="__codelineno-53-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-53-4" name="__codelineno-53-4"></a>Content-Length: 56
+<a id="__codelineno-53-5" name="__codelineno-53-5"></a>
+<a id="__codelineno-53-6" name="__codelineno-53-6"></a>{"statusCode": 403, "key": "ERRORS.CAPTCHA_BEFORE_ACCOUNT"}
+</code></pre></div></td></tr></table></div>
+<h3 id="768">7.6.8. <span style="color: #1f4d78">管理你的账户</span></h3>
+<p>新患者登录并读取她的账户记录：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-54-1">1</a></span>
+<span class="normal"><a href="#__codelineno-54-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1"></a>$ curl -s -b cookies-jbernard.txt http://localhost:8080/api/my-account
+<a id="__codelineno-54-2" name="__codelineno-54-2"></a>{"title": "Mme", "firstName": "Julie", "lastName": "BERNARD", "login": "jbernard", "version": 1}
+</code></pre></div></td></tr></table></div>
+<p>修改需要提供当前密码。服务器会签发一个包含新姓名的新令牌：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-55-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mme"</span><span class="p">,</span><span class="w"> </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Julie"</span><span class="p">,</span><span class="w"> </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BERNARD-DUVAL"</span><span class="p">,</span><span class="w"> </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jbernard"</span><span class="p">,</span><span class="w"> </span><span class="nt">"currentPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secret1"</span><span class="p">,</span><span class="w"> </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-56-1">1</a></span>
+<span class="normal"><a href="#__codelineno-56-2">2</a></span>
+<span class="normal"><a href="#__codelineno-56-3">3</a></span>
+<span class="normal"><a href="#__codelineno-56-4">4</a></span>
+<span class="normal"><a href="#__codelineno-56-5">5</a></span>
+<span class="normal"><a href="#__codelineno-56-6">6</a></span>
+<span class="normal"><a href="#__codelineno-56-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1"></a>$ curl -i -b cookies-jbernard.txt -c cookies-jbernard.txt -X PUT --json @curl/my-account.json http://localhost:8080/api/my-account
+<a id="__codelineno-56-2" name="__codelineno-56-2"></a>HTTP/1.1 200 OK
+<a id="__codelineno-56-3" name="__codelineno-56-3"></a>Set-Cookie: rdvmedecins_jwt=eyJhbGciOiJIUzI1NiIs...; Max-Age=7200; Path=/api; Expires=Mon, 28 Sep 2026 12:49:13 GMT; HttpOnly; SameSite=Strict
+<a id="__codelineno-56-4" name="__codelineno-56-4"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-56-5" name="__codelineno-56-5"></a>Content-Length: 63
+<a id="__codelineno-56-6" name="__codelineno-56-6"></a>
+<a id="__codelineno-56-7" name="__codelineno-56-7"></a>{"login": "jbernard", "name": "Julie BERNARD-DUVAL", "role": "USER"}
+</code></pre></div></td></tr></table></div>
+<p>删除账户的同时也会删除 Cookie：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-57-1">1</a></span>
+<span class="normal"><a href="#__codelineno-57-2">2</a></span>
+<span class="normal"><a href="#__codelineno-57-3">3</a></span>
+<span class="normal"><a href="#__codelineno-57-4">4</a></span>
+<span class="normal"><a href="#__codelineno-57-5">5</a></span>
+<span class="normal"><a href="#__codelineno-57-6">6</a></span>
+<span class="normal"><a href="#__codelineno-57-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1"></a>$ curl -i -b cookies-jbernard.txt -c cookies-jbernard.txt -X DELETE --json @curl/my-account-delete.json http://localhost:8080/api/my-account
+<a id="__codelineno-57-2" name="__codelineno-57-2"></a>HTTP/1.1 200 OK
+<a id="__codelineno-57-3" name="__codelineno-57-3"></a>Set-Cookie: rdvmedecins_jwt=; Path=/api; Expires=Thu, 01 Jan 1970 00:00:00 GMT
+<a id="__codelineno-57-4" name="__codelineno-57-4"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-57-5" name="__codelineno-57-5"></a>Content-Length: 2
+<a id="__codelineno-57-6" name="__codelineno-57-6"></a>
+<a id="__codelineno-57-7" name="__codelineno-57-7"></a>{}
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-58-1">1</a></span>
+<span class="normal"><a href="#__codelineno-58-2">2</a></span>
+<span class="normal"><a href="#__codelineno-58-3">3</a></span>
+<span class="normal"><a href="#__codelineno-58-4">4</a></span>
+<span class="normal"><a href="#__codelineno-58-5">5</a></span>
+<span class="normal"><a href="#__codelineno-58-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1"></a>$ curl -i -b cookies-jbernard.txt http://localhost:8080/api/auth/me
+<a id="__codelineno-58-2" name="__codelineno-58-2"></a>HTTP/1.1 401 Unauthorized
+<a id="__codelineno-58-3" name="__codelineno-58-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-58-4" name="__codelineno-58-4"></a>Content-Length: 47
+<a id="__codelineno-58-5" name="__codelineno-58-5"></a>
+<a id="__codelineno-58-6" name="__codelineno-58-6"></a>{"statusCode": 401, "key": "ERRORS.AUTH_REQUIRED"}
+</code></pre></div></td></tr></table></div>
+<h3 id="769">7.6.9. <span style="color: #1f4d78">一些错误</span></h3>
+<p>未知的路由，以及不是有效 JSON 的请求体：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-59-1">1</a></span>
+<span class="normal"><a href="#__codelineno-59-2">2</a></span>
+<span class="normal"><a href="#__codelineno-59-3">3</a></span>
+<span class="normal"><a href="#__codelineno-59-4">4</a></span>
+<span class="normal"><a href="#__codelineno-59-5">5</a></span>
+<span class="normal"><a href="#__codelineno-59-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1"></a>$ curl -i -b cookies-martin.txt http://localhost:8080/api/does-not-exist
+<a id="__codelineno-59-2" name="__codelineno-59-2"></a>HTTP/1.1 404 Not Found
+<a id="__codelineno-59-3" name="__codelineno-59-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-59-4" name="__codelineno-59-4"></a>Content-Length: 43
+<a id="__codelineno-59-5" name="__codelineno-59-5"></a>
+<a id="__codelineno-59-6" name="__codelineno-59-6"></a>{"statusCode": 404, "key": "ERRORS.NOT_FOUND"}
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-60-1">1</a></span>
+<span class="normal"><a href="#__codelineno-60-2">2</a></span>
+<span class="normal"><a href="#__codelineno-60-3">3</a></span>
+<span class="normal"><a href="#__codelineno-60-4">4</a></span>
+<span class="normal"><a href="#__codelineno-60-5">5</a></span>
+<span class="normal"><a href="#__codelineno-60-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1"></a>$ curl -i -b cookies.txt -H "Content-Type: application/json" -d "{not json" http://localhost:8080/api/appointments
+<a id="__codelineno-60-2" name="__codelineno-60-2"></a>HTTP/1.1 400 Bad Request
+<a id="__codelineno-60-3" name="__codelineno-60-3"></a>Content-Type: application/json; charset=utf-8
+<a id="__codelineno-60-4" name="__codelineno-60-4"></a>Content-Length: 45
+<a id="__codelineno-60-5" name="__codelineno-60-5"></a>
+<a id="__codelineno-60-6" name="__codelineno-60-6"></a>{"statusCode": 400, "key": "ERRORS.BAD_REQUEST"}
+</code></pre></div></td></tr></table></div>
+<p>关于服务器，我们现在已经掌握了编写客户端所需知道的一切。</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        本教程由 Anthropic 的 AI <strong>Claude</strong> 应 <strong>Serge Tahé</strong> 的请求编写，根据
+        <em>知识共享署名 – 禁止商业使用 –
+        共享 3.0 未本地化版</em>的条款向公众开放。
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
