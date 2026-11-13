@@ -758,7 +758,7 @@
 
 
 <h1 id="1-简介">1. <span style="color: #2e74b5">简介</span></h1>
-<p>本文档的 PDF 位于<a href="https://1drv.ms/b/c/f53a919f43d27eb5/IQDqm4-2ARAGQqCZIajN1nX3AY0Bh9ICIodQl7nj4ik6T5Q?e=t9e1Y4"><u><span style="color: #0563c1">此处</span></u></a>。</p>
+<p>本文档的 PDF 位于<a href="https://1drv.ms/b/c/f53a919f43d27eb5/IQBUJlKa9_dTQZ9Z0sBrgKMAAT5BB9ECFgPuoa64v6doJZQ?e=a7Fl1V"><u><span style="color: #0563c1">此处</span></u></a>。</p>
 <p>本文档的代码位于<a href="https://1drv.ms/u/c/f53a919f43d27eb5/IQDp0wrTO2gfR6OxiE8qt2UtAfs3xIqROfl9Q6rJWKhSC4k"><u><span style="color: #0563c1">此处</span></u></a>。</p>
 <p>本文档由 <strong>Anthropic 的 AI Claude</strong> 制作。它承接课程 <a href="https://stahe.github.io/en-nestjs-html-sept-2026/"><u><span style="color: #0563c1">“NestJS Web 框架循序渐进入门</span></u></a>”，并在此基础上<strong>转换视角</strong>：</p>
 <ul>
@@ -770,14 +770,14 @@
 <p>关于这一主题已有一门课程：<a href="https://stahe.github.io/en-angular-nestjs-sept-2026/"><u><span style="color: #0563c1">Angular/NestJS 客户端/服务器示例（2026）</span></u></a>，它同时涵盖服务器和客户端。本文档的方法有所不同：服务器被视为<strong>黑盒</strong>，我们只关心其 API 和 JSON，并先<em>[Angular]</em> 循序渐进地学习，然后再着手完整的客户端。</p>
 <h2 id="11-angular-在-web-应用程序中的作用">1.1. <span style="color: #2e74b5">Angular 在 Web 应用程序中的作用</span></h2>
 <p>该应用程序由两部分组成，它们之间仅通过请求进行通信：</p>
-<p><img src="images/1000000000000AF0000002CA66D24AB3.png" width="605" height="154" style="width:16cm;height:4.08cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000AF0000002CA66D24AB3.png" /></p>
+<p><img src="images/1000000000000AF0000002CA169579EA.png" width="605" height="154" style="width:16cm;height:4.08cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000AF0000002CA169579EA.png" /></p>
 <ul>
 <li>1：<em>[Angular]</em> 应用程序在浏览器中运行，向服务器发送 HTTP 请求，例如 <strong><em>[GET /api/schedule?doctorId=1&amp;day=2026-10-05]</em></strong>；</li>
 <li>2：服务器以 JSON 数据响应：该医生当天的日程。它不生成任何页面；</li>
 <li>3：利用这些数据，<em>[Angular]</em> 在不重新加载页面的情况下更新浏览器中显示的页面。</li>
 </ul>
 <p>下图比较了这两种架构：</p>
-<p><img src="images/1000000000000882000003785B5D34EF.png" width="605" height="247" style="width:16cm;height:6.523cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000882000003785B5D34EF.png" /></p>
+<p><img src="images/1000000000000882000003783B6B00DE.png" width="605" height="247" style="width:16cm;height:6.523cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000882000003783B6B00DE.png" /></p>
 <p>浏览器在启动时只加载一个几乎为空的 HTML 页面。其余一切都由 <em>[JavaScript]</em> 代码生成：这就是所谓的<strong>单页应用</strong> （SPA，即 <em>[Single Page Application]</em>）。当用户点击内部链接时，不会向服务器请求页面：<em>[Angular]</em> 路由器会更改显示的 URL 并替换页面内容。</p>
 <p><em>[Angular]</em> 是 Google 创建的框架。它的第一个版本 <em>[AngularJS]</em> （2010 年）于 2016 年被完全重写：正是这次用 [TypeScript] 完成的重写，如今被简称为 <em>[Angular]</em>，并且每六个月发布一个新的主版本。它基于三个理念：</p>
 <ul>

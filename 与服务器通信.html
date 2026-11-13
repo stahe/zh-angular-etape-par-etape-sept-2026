@@ -913,7 +913,7 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">          </span><span class="p">},</span>
 </code></pre></div></td></tr></table></div>
 <p>浏览器发送 <strong><em>[GET http://localhost:4200/api/captcha]</em></strong>；开发服务器将请求转发到 <strong><em>[http://localhost:8080/api/captcha]</em></strong>，然后把响应返回给浏览器。对浏览器来说，页面和 API 具有<strong>同一个源</strong>：</p>
-<p><img src="images/1000000000000A18000003C0446FCA0F.png" width="605" height="225" style="width:16cm;height:5.944cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000A18000003C0446FCA0F.png" /></p>
+<p><img src="images/1000000000000A18000003C0E386BA1A.png" width="605" height="225" style="width:16cm;height:5.944cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000A18000003C0E386BA1A.png" /></p>
 <p>在生产环境中，将不再有开发服务器：JSON 服务器本身会提供编译后的客户端文件（见“部署”一章）。页面和 API 仍然共享同一个源。</p>
 <h3 id="812-请求">8.1.2. <span style="color: #1f4d78">请求</span></h3>
 <p><em>[Angular] 提供了自己的 HTTP 客户端，即服务 [HttpClient]。</em>它在任何应用中都自动可用：只需注入即可。</p>
@@ -1128,7 +1128,7 @@
 <li>第 12 行：验证码（CAPTCHA）图像。</li>
 </ul>
 <p><strong><em>[npm start 22-httpclient]</em></strong>；点击 <em>[Another image]</em>：</p>
-<p><img src="images/10000000000005DC000001D9B9E0F0F3.png" width="605" height="191" style="width:16cm;height:5.045cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001D9B9E0F0F3.png" /></p>
+<p><img src="images/10000000000005DC000001D9E73DC14F.png" width="605" height="191" style="width:16cm;height:5.045cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001D9E73DC14F.png" /></p>
 <p>在浏览器的开发者工具（F12）中，“网络”选项卡显示请求 <em>[captcha]</em>，它被发送到 <em>[localhost:4200]</em>，以及它的 JSON 响应。</p>
 <h2 id="82-示例-23登录cookie-和会话">8.2. <span style="color: #2e74b5">示例 23：登录、Cookie 和会话</span></h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">  1</a></span>
@@ -1525,9 +1525,9 @@
 <li>第 34 行：<strong><em>[$event.preventDefault()]</em></strong> 阻止链接跳转到其地址（#）。</li>
 </ul>
 <p><strong><em>[npm start 23-login]</em></strong>。输入错误的密码时（服务器处于测试模式：任何验证码（CAPTCHA）都接受响应 <em>[test]</em>）：</p>
-<p><img src="images/10000000000005DC00000371989858A1.png" width="605" height="355" style="width:16cm;height:9.396cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC00000371989858A1.png" /></p>
+<p><img src="images/10000000000005DC00000371E5FBD539.png" width="605" height="355" style="width:16cm;height:9.396cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC00000371E5FBD539.png" /></p>
 <p>输入正确的密码，然后刷新页面（F5）：你仍保持登录状态。</p>
-<p><img src="images/10000000000005DC0000021C2F636303.png" width="605" height="218" style="width:16cm;height:5.761cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000021C2F636303.png" /></p>
+<p><img src="images/10000000000005DC0000021CF46BA4E2.png" width="605" height="218" style="width:16cm;height:5.761cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000021CF46BA4E2.png" /></p>
 <h2 id="83-示例-24api-的访问层">8.3. <span style="color: #2e74b5">示例 24：API 的访问层</span></h2>
 <p>在示例 23 中，每个请求都重复相同的步骤：/api 前缀、<strong><em>[firstValueFrom]</em></strong>、读取错误响应体，以及选择消息。本示例把它们归并到几个文件中，这些文件位于工作区的 <em>[common] 文件夹</em> 中，因为示例 25 也会用到它们：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
@@ -2649,9 +2649,9 @@
 <li>第 62–67 行：按钮遵循服务器计算出的权限。</li>
 </ul>
 <p><strong><em>[npm start 24-api-service]</em></strong>。管理员为 Alice DURAND 预订 8:40 的时间段：</p>
-<p><img src="images/10000000000005DC000004D6F74EAFBF.png" width="605" height="499" style="width:16cm;height:13.204cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000004D6F74EAFBF.png" /></p>
+<p><img src="images/10000000000005DC000004D6656302FC.png" width="605" height="499" style="width:16cm;height:13.204cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000004D6656302FC.png" /></p>
 <p>患者 Martin 看到的同一份日程：该时间段已被预订，但没有列出患者姓名。</p>
-<p><img src="images/10000000000005DC0000045CB1737691.png" width="605" height="450" style="width:16cm;height:11.904cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000045CB1737691.png" /></p>
+<p><img src="images/10000000000005DC0000045C8B6178A7.png" width="605" height="450" style="width:16cm;height:11.904cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000045C8B6178A7.png" /></p>
 <h2 id="84-示例-25服务器返回的错误">8.4. <span style="color: #2e74b5">示例 25：服务器返回的错误</span></h2>
 <p>本示例演示管理员对客户的管理。表单在浏览器中不做任何验证：所有内容都发送给服务器，服务器在拒绝时会以错误作出响应：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
@@ -3068,7 +3068,7 @@
 <a id="__codelineno-22-8" name="__codelineno-22-8"></a><span class="c1">//</span>
 <a id="__codelineno-22-9" name="__codelineno-22-9"></a><span class="c1">//   400 { key: 'ERRORS.INVALID_FORM', fields: { lastName: 'ERRORS.LASTNAME_REQUIRED' } }</span>
 <a id="__codelineno-22-10" name="__codelineno-22-10"></a><span class="c1">//   409 { key: 'ERRORS.PATIENT_ALREADY_EXISTS', fields: { firstName: ..., lastName: ... } }</span>
-<a id="__codelineno-22-11" name="__codelineno-22-11"></a><span class="c1">//   409 { key: 'ERRORS.CONCURRENT_UPDATE' }         (乐观锁)</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11"></a><span class="c1">//   409 { key: 'ERRORS.CONCURRENT_UPDATE' } (乐观锁)</span>
 <a id="__codelineno-22-12" name="__codelineno-22-12"></a><span class="c1">//</span>
 <a id="__codelineno-22-13" name="__codelineno-22-13"></a><span class="c1">// submit(form, action)：action 把模型发送到服务器。如果它</span>
 <a id="__codelineno-22-14" name="__codelineno-22-14"></a><span class="c1">// 返回 ERRORS（一个数组），信号表单会把它们附加</span>
@@ -3407,11 +3407,11 @@
 </ul>
 <p>切换语言也会重新翻译已显示的错误消息：我们只保留了键。</p>
 <p><strong><em>[npm start 25-server-errors]</em></strong>；以 admin 身份登录后，我们提交称谓“Dr,”、过长的名、空的姓以及无效的用户名：</p>
-<p><img src="images/10000000000005DC0000047AD0B7FB52.png" width="605" height="462" style="width:16cm;height:12.224cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000047AD0B7FB52.png" /></p>
+<p><img src="images/10000000000005DC0000047AD74C2710.png" width="605" height="462" style="width:16cm;height:12.224cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000047AD74C2710.png" /></p>
 <p>我们从一个空白表单开始：称谓为“Dr,”，名为“Jean,”，姓为空。服务器拒绝了称谓和姓；随后我们更正称谓并填写姓：这两个字段的错误立即消失，无需重新提交。通用消息会一直显示，直到下一次提交：</p>
-<p><img src="images/10000000000005DC0000038CA3FECF92.png" width="605" height="366" style="width:16cm;height:9.686cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000038CA3FECF92.png" /></p>
+<p><img src="images/10000000000005DC0000038CF724AB96.png" width="605" height="366" style="width:16cm;height:9.686cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000038CF724AB96.png" /></p>
 <p>同名同姓的情况（Alice DURAND 已存在）：服务器返回 409 响应，并标记名和姓字段。已被占用的用户名“martin,”没有被标记：服务器在遇到第一条被违反的验证规则时就停止了。随后我们切换到法语：已显示的消息被重新翻译（页面标题和登录栏是用英语写的，因此不会被翻译）：</p>
-<p><img src="images/10000000000005DC000003D14C437E4A.png" width="605" height="394" style="width:16cm;height:10.421cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000003D14C437E4A.png" /></p>
+<p><img src="images/10000000000005DC000003D10EADBF71.png" width="605" height="394" style="width:16cm;height:10.421cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000003D10EADBF71.png" /></p>
 <p>也可以尝试在两个标签页中编辑同一条记录：第二次保存会收到 [ERRORS.CONCURRENT_UPDATE]。</p>
 
 

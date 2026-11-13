@@ -1351,7 +1351,7 @@
 <li>第 20 行：<strong><em>[compact]</em></strong>，没有值：得益于 [booleanAttribute]，输入接收到 [true]。</li>
 </ul>
 <p><strong><em>[npm start 10-components]</em></strong>；点击“Toggle availability”：</p>
-<p><img src="images/10000000000005DC000001F8B781EE0E.png" width="605" height="203" style="width:16cm;height:5.376cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001F8B781EE0E.png" /></p>
+<p><img src="images/10000000000005DC000001F8A596B6C6.png" width="605" height="203" style="width:16cm;height:5.376cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001F8A596B6C6.png" /></p>
 <h2 id="32-示例-11组件的输出与-model">3.2. <span style="color: #2e74b5">示例 11：组件的输出与 <code>model()</code></span></h2>
 <p>子组件有两种方式将信息发回给父组件：</p>
 <ol>
@@ -1661,7 +1661,7 @@
 <li>第 20 行：父组件修改自己的数据：两个字段随之更新。</li>
 </ul>
 <p><strong><em>[npm start 11-outputs-model]</em></strong>；点击咖啡四次，点击水一次，然后输入姓名：</p>
-<p><img src="images/10000000000005DC000003E1948DD8B5.png" width="605" height="400" style="width:16cm;height:10.592cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000003E1948DD8B5.png" /></p>
+<p><img src="images/10000000000005DC000003E1DD745BF8.png" width="605" height="400" style="width:16cm;height:10.592cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000003E1DD745BF8.png" /></p>
 <h2 id="33-示例-12内容投影">3.3. <span style="color: #2e74b5">示例 12：内容投影</span></h2>
 <p>输入传递<strong>数据</strong>；<strong>内容投影</strong>传递<strong>内容</strong>（来自 HTML 和其他组件），由父组件写在组件标签之间。这相当于 <strong><em>[layout.hbs]</em></strong> 模板在 <em>[NestJS]</em> 课程中的客户端对应物，以及其 <strong><em>[{{{body}}}]</em></strong>。</p>
 <h3 id="331-卡片">3.3.1. <span style="color: #1f4d78">卡片</span></h3>
@@ -1713,7 +1713,7 @@
 <a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="c1">// 内容（HTML、其他组件），由父组件写在</span>
 <a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="c1">// &lt;app-card&gt; 和 &lt;/app-card&gt; 标签之间。卡片确定外框（边框，</span>
 <a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="c1">// 页眉、页脚），父组件提供其中的内容：</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="c1">//   - &lt;ng-content /&gt;                   ："主"内容；</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="c1">//   - &lt;ng-content /&gt; ："主"内容；</span>
 <a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="c1">//   - &lt;ng-content select="[header]" /&gt; ：仅限带有</span>
 <a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="c1">//                                        header 属性的元素；</span>
 <a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="c1">//   - 放在 &lt;ng-content&gt; 和 &lt;/ng-content&gt; 之间的内容，在</span>
@@ -2016,7 +2016,7 @@
 <li>第 30–35 行：没有页眉的卡片（默认内容“Untitled”），以及一个空表格。</li>
 </ul>
 <p><strong><em>[npm start 12-projection]</em></strong>：</p>
-<p><img src="images/10000000000005DC000003B0C416D689.png" width="605" height="381" style="width:16cm;height:10.068cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000003B0C416D689.png" /></p>
+<p><img src="images/10000000000005DC000003B0C51136B2.png" width="605" height="381" style="width:16cm;height:10.068cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000003B0C51136B2.png" /></p>
 <p>编译器无法识别模板中 <strong><em>[c]</em></strong> 的类型（第 10–20 行）：它将其视为 <strong><em>[any]</em></strong>。这可以补救（通过声明上下文类型的指令），代价是多写一点代码；这是该技术的局限。</p>
 <h2 id="34-示例-13组件的生命周期">3.4. <span style="color: #2e74b5">示例 13：组件的生命周期</span></h2>
 <p>组件会被创建、显示、存在，然后消失。<em>[Angular]</em> 允许你在每个阶段采取行动：这就是组件的<strong>生命周期</strong>。</p>
@@ -2069,12 +2069,12 @@
 <a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="c1">// 13-lifecycle/src/app/clock/clock.ts</span>
 <a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="c1">// -------------------------------------------------------------------------</span>
 <a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="c1">// 组件的生命周期：</span>
-<a id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="c1">//   1. constructor      ：创建类；输入此时</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="c1">//   1. constructor ：创建类；输入此时</span>
 <a id="__codelineno-15-6" name="__codelineno-15-6"></a><span class="c1">//                         尚不可用；</span>
-<a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="c1">//   2. ngOnInit         ：输入已接收到第一个值；</span>
-<a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="c1">//   3. afterNextRender  ：组件已显示，其 HTML 元素</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="c1">//   2. ngOnInit ：输入已接收到第一个值；</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="c1">//   3. afterNextRender ：组件已显示，其 HTML 元素</span>
 <a id="__codelineno-15-9" name="__codelineno-15-9"></a><span class="c1">//                         已存在于页面中；</span>
-<a id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="c1">//   4. ngOnDestroy      ：组件即将从页面中移除。</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="c1">//   4. ngOnDestroy ：组件即将从页面中移除。</span>
 <a id="__codelineno-15-11" name="__codelineno-15-11"></a><span class="c1">// 时钟在启动时开启一个定时器（setInterval）……并且必须</span>
 <a id="__codelineno-15-12" name="__codelineno-15-12"></a><span class="c1">// 在它消失时务必停止该定时器：否则定时器</span>
 <a id="__codelineno-15-13" name="__codelineno-15-13"></a><span class="c1">// 会白白一直运行下去（内存泄漏）。</span>
@@ -2283,7 +2283,7 @@
 <li>第 18 行：<strong><em>[#field]</em></strong>，即 <strong><em>[viewChild(&#x27;field&#x27;)]</em></strong> 所引用的元素。</li>
 </ul>
 <p><strong><em>[npm start 13-lifecycle]</em></strong>；取消勾选再重新勾选复选框，然后点击“Search...”：</p>
-<p><img src="images/10000000000005DC000002D07A9C477D.png" width="605" height="290" style="width:16cm;height:7.68cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000002D07A9C477D.png" /></p>
+<p><img src="images/10000000000005DC000002D0BAA3030E.png" width="605" height="290" style="width:16cm;height:7.68cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000002D0BAA3030E.png" /></p>
 <p>日志显示了各步骤的顺序：首先是父组件（<strong><em>[App: ngOnInit]</em></strong>），然后是时钟（<strong><em>[ngOnInit]</em></strong>、<strong><em>[afterNextRender]</em></strong>），接着是它的销毁（<strong><em>[ngOnDestroy]</em></strong>），以及一个新的时钟。搜索字段获得了焦点。</p>
 <h2 id="35-示例-14服务与依赖注入">3.5. <span style="color: #2e74b5">示例 14：服务与依赖注入</span></h2>
 <p>一个<strong>服务</strong> 是将多个组件共享的数据和代码组合在一起的类：服务器访问、已登录用户、购物车等。组件不会创建服务（绝不要 <strong><em>[new CartService()]</em></strong>）：它们会<strong>请求</strong>这些服务，请求对象是 <em>[Angular]</em>，方式是使用 <strong><em>[inject()]</em></strong> 函数。这就是 <strong>依赖注入</strong>，即 <em>[NestJS]</em> 课程在服务器端介绍过的机制。</p>
@@ -2604,7 +2604,7 @@
 <a id="__codelineno-24-14" name="__codelineno-24-14"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p><strong><em>[npm start 14-services]</em></strong>；添加三件商品，移除一件：</p>
-<p><img src="images/10000000000005DC000002AE98E062F5.png" width="605" height="277" style="width:16cm;height:7.317cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000002AE98E062F5.png" /></p>
+<p><img src="images/10000000000005DC000002AE4F83EED2.png" width="605" height="277" style="width:16cm;height:7.317cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000002AE4F83EED2.png" /></p>
 <p>两个定时器的前进速度不同：每个组件收到的是离它最近的实例。而购物车则由目录和摘要两者共享。</p>
 <p>在 <em>[Angular]</em> 中，服务是在组件之间共享逻辑和数据的手段（相当于“组合式函数”以及 <em>[provide]</em> / <em>[inject]</em> 在 <em>[Vue.js]</em> 中所起的作用）。示例 20 会把它变成由整个应用程序共享的状态。</p>
 <h2 id="36-示例-15编写自己的指令">3.6. <span style="color: #2e74b5">示例 15：编写自己的指令</span></h2>
@@ -2646,7 +2646,7 @@
 <a id="__codelineno-25-7" name="__codelineno-25-7"></a><span class="c1">// host：指令在携带它的元素上设置的绑定</span>
 <a id="__codelineno-25-8" name="__codelineno-25-8"></a><span class="c1">// （即它的 "host"）：</span>
 <a id="__codelineno-25-9" name="__codelineno-25-9"></a><span class="c1">//   - '[style.background-color]' : 元素的一个属性；</span>
-<a id="__codelineno-25-10" name="__codelineno-25-10"></a><span class="c1">//   - '(mouseenter)'             : 元素的一个事件。</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10"></a><span class="c1">//   - '(mouseenter)' : 元素的一个事件。</span>
 <a id="__codelineno-25-11" name="__codelineno-25-11"></a><span class="c1">// =========================================================================</span>
 <a id="__codelineno-25-12" name="__codelineno-25-12"></a>
 <a id="__codelineno-25-13" name="__codelineno-25-13"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Directive</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">signal</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@angular/core'</span><span class="p">;</span>
@@ -2931,7 +2931,7 @@
 <li>第 13 行：长按会删除该医生。</li>
 </ul>
 <p><strong><em>[npm start 15-directives]</em></strong>；按住第二个按钮，然后将鼠标悬停在第一行上：</p>
-<p><img src="images/10000000000005DC0000023109B66E0E.png" width="605" height="226" style="width:16cm;height:5.985cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000023109B66E0E.png" /></p>
+<p><img src="images/10000000000005DC0000023120B3F70F.png" width="605" height="226" style="width:16cm;height:5.985cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000023120B3F70F.png" /></p>
 <h2 id="37-示例-16可复用的确认窗口">3.7. <span style="color: #2e74b5">示例 16：可复用的确认窗口</span></h2>
 <p>在删除某一项之前，会请用户确认。浏览器提供了 <strong><em>[window.confirm()]</em></strong>，但它的窗口无法设置格式或翻译。本示例用 <em>[Bootstrap]</em> 窗口取代它，综合了前面示例所演示的内容：一个<strong>服务</strong> （示例 14），用信号携带窗口的状态；以及一个<strong>组件</strong> ，用来显示它。案例研究将使用完全相同的机制。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span>
@@ -3296,7 +3296,7 @@
 <li>第 19 行：整个应用程序只放置一次的窗口。之后任何组件只需调用该服务即可打开它。</li>
 </ul>
 <p><strong><em>[npm start 16-confirmation]</em></strong>；点击 Alice DURAND 的 [Delete] 按钮：</p>
-<p><img src="images/10000000000005DC000001C228EB0F60.png" width="605" height="181" style="width:16cm;height:4.8cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001C228EB0F60.png" /></p>
+<p><img src="images/10000000000005DC000001C23DFD4B26.png" width="605" height="181" style="width:16cm;height:4.8cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001C23DFD4B26.png" /></p>
 <p>在 <em>[Vue.js]</em>中，窗口及其状态由“组合式函数”提供；在 <em>[Angular]</em>中，则由服务提供。原理是相同的：一个<strong>共享</strong>状态，存放在信号中，由多个组件读取和修改。</p>
 
 

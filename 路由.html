@@ -948,8 +948,8 @@
 <a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="c1">// 并替换 &lt;router-outlet&gt; 中显示的组件。</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="c1">//</span>
 <a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="c1">// 路由将一个路径（PATH）与一个组件（COMPONENT，即一个“页面”）关联：</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="c1">//   'doctors/:id'    :id 是参数（/doctors/2 -&gt; id = "2"）；</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="c1">//   '**'             任意路径：“未找到”页面。</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="c1">//   'doctors/:id' :id 是参数（/doctors/2 -&gt; id = "2"）；</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="c1">//   '**' 任意路径：“未找到”页面。</span>
 <a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="c1">//                    路由按顺序匹配：它必须放在最后。</span>
 <a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="c1">// title：显示该页面时浏览器标签页的标题。</span>
 <a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="c1">// =========================================================================</span>
@@ -1551,11 +1551,11 @@
 </ul>
 <h3 id="415-执行">4.1.5. <span style="color: #1f4d78">执行</span></h3>
 <p><strong><em>[npm start 17-router]</em></strong>；点击“Doctors”，然后点击“Paul”TATOU：</p>
-<p><img src="images/10000000000005DC000001E97A561A80.png" width="605" height="197" style="width:16cm;height:5.216cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001E97A561A80.png" /></p>
+<p><img src="images/10000000000005DC000001E9C397883E.png" width="605" height="197" style="width:16cm;height:5.216cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001E9C397883E.png" /></p>
 <p>点击“Search”，输入“pediatrician”，然后按 Enter 键：地址随之改变。</p>
-<p><img src="images/10000000000005DC000001C485E7F6A9.png" width="605" height="182" style="width:16cm;height:4.821cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001C485E7F6A9.png" /></p>
+<p><img src="images/10000000000005DC000001C4F5DD8680.png" width="605" height="182" style="width:16cm;height:4.821cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001C4F5DD8680.png" /></p>
 <p>失效的链接会导致“页面未找到”错误：</p>
-<p><img src="images/10000000000005DC000001C2A0832863.png" width="605" height="181" style="width:16cm;height:4.8cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001C2A0832863.png" /></p>
+<p><img src="images/10000000000005DC000001C2678D9445.png" width="605" height="181" style="width:16cm;height:4.8cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001C2678D9445.png" /></p>
 <p>你可以在浏览器开发者工具的 Network 选项卡中验证，点击时不会向服务器请求任何页面，只有首次访问“About”页面时除外（一个名为<em>[chunk-XXXX.js]</em>的文件）。你也可以重新加载任意页面（F5）：开发服务器始终返回<em>[index.html]</em>，由路由器显示与该地址对应的页面。生产服务器必须做到同样的事情：这正是 JSON 服务器在部署时将要做的。</p>
 <h2 id="42-示例-18导航守卫页面">4.2. <span style="color: #2e74b5">示例 18：导航守卫页面</span></h2>
 <p><em>[RdvMedecins]</em>应用程序中的某些页面是受限的：日程需要登录，医生管理需要 ADMIN 角色。在服务器端，<em>[NestJS]</em>课程使用了访问<strong>控制</strong>（<em>[JwtAuthGuard]</em>、<em>[RolesGuard]</em>）。<em>[Angular]</em>路由器也有自己的机制：在显示路由之<strong>前</strong>调用的函数，它们可以允许导航，也可以将导航重定向到另一个地址。</p>
@@ -1714,7 +1714,7 @@
 <a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="c1">// -------------------------------------------------------------------------</span>
 <a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="c1">// 守卫（CanActivateFn）是路由器在显示声明了它的路由（canActivate: [...]）之前</span>
 <a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="c1">// 调用的函数。它返回：</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="c1">//   - true      ：导航继续；</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="c1">//   - true ：导航继续；</span>
 <a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="c1">//   - UrlTree（由 router.createUrlTree 构建的地址）：</span>
 <a id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="c1">//     导航被替换为重定向到该地址。</span>
 <a id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="c1">// 守卫可以注入服务（inject）：它运行在应用的</span>
@@ -1791,7 +1791,7 @@
 <a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="c1">// 18-guards/src/app/app.routes.ts - 受保护的路由</span>
 <a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="c1">// -------------------------------------------------------------------------</span>
 <a id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="c1">//   - canActivate：需要依次通过的守卫；</span>
-<a id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="c1">//   - data       ：附加在路由上的自由信息（此处为</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="c1">//   - data ：附加在路由上的自由信息（此处为</span>
 <a id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="c1">//                  授权的角色），由守卫读取。</span>
 <a id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="c1">// =========================================================================</span>
 <a id="__codelineno-17-8" name="__codelineno-17-8"></a>
@@ -2092,9 +2092,9 @@
 </ul>
 <h3 id="426-执行">4.2.6. <span style="color: #1f4d78">执行</span></h3>
 <p><strong><em>[npm start 18-guards]</em></strong>；在未登录的情况下，点击 Administration：守卫<strong><em>[loginRequired]</em></strong> 会重定向到登录页面，同时保留所请求的页面。</p>
-<p><img src="images/10000000000005DC000001C27BA462BE.png" width="605" height="181" style="width:16cm;height:4.8cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001C27BA462BE.png" /></p>
+<p><img src="images/10000000000005DC000001C2EB92F08F.png" width="605" height="181" style="width:16cm;height:4.8cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001C2EB92F08F.png" /></p>
 <p>以拥有 USER 角色的 martin 身份登录：登录后，你会被重定向到 /administration；这一次，守卫<strong><em>[roleRequired]</em></strong> 拒绝了导航。</p>
-<p><img src="images/10000000000005DC000001C241F3B429.png" width="605" height="181" style="width:16cm;height:4.8cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001C241F3B429.png" /></p>
+<p><img src="images/10000000000005DC000001C2A9596606.png" width="605" height="181" style="width:16cm;height:4.8cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001C2A9596606.png" /></p>
 <p>以 admin 身份登录时，同一链接会打开管理页面。</p>
 
 

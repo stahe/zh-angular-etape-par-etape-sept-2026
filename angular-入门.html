@@ -1360,9 +1360,9 @@
 <a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="c1">// 01-first-application/src/app/app.ts - 第一个组件</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="c1">// -------------------------------------------------------------------------</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="c1">// Angular 组件是一个由 @Component 装饰的 TypeScript 类：</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="c1">//   - selector    ：表示它的 HTML 标签（&lt;app-root&gt;）；</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="c1">//   - selector ：表示它的 HTML 标签（&lt;app-root&gt;）；</span>
 <a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="c1">//   - templateUrl ：其 HTML 文件（app.html）；</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="c1">//   - styleUrl    ：其 CSS 文件（app.css），仅作用于</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="c1">//   - styleUrl ：其 CSS 文件（app.css），仅作用于</span>
 <a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="c1">//                   此组件。</span>
 <a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="c1">// 类的属性和方法可以在模板中使用。</span>
 <a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="c1">// =========================================================================</span>
@@ -1469,7 +1469,7 @@
 <a id="__codelineno-10-8" name="__codelineno-10-8"></a>  ➜  Local:   http://localhost:4200/
 </code></pre></div></td></tr></table></div>
 <p>打开 URL http://localhost:4200/ 并点击按钮三次：</p>
-<p><img src="images/10000000000005DC000001C2758F3945.png" width="605" height="181" style="width:16cm;height:4.8cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001C2758F3945.png" /></p>
+<p><img src="images/10000000000005DC000001C2C1812D78.png" width="605" height="181" style="width:16cm;height:4.8cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001C2C1812D78.png" /></p>
 <p>可以尝试两个实验：</p>
 <ul>
 <li>修改<strong><em>[app.ts]</em></strong> 中的标题文本并保存文件：页面会立即更新，无需重新加载。开发服务器会监视文件、重新编译更改，并通知浏览器；</li>
@@ -1552,11 +1552,11 @@
 <a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="c1">// 02-signals/src/app/app.ts - signal、computed、effect、linkedSignal</span>
 <a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="c1">// -------------------------------------------------------------------------</span>
 <a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="c1">// 一个含增值税价格的小型计算器：</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="c1">//   - signal       ：响应式的值，通过调用来读取，</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="c1">//   - signal ：响应式的值，通过调用来读取，</span>
 <a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="c1">//                    通过 set() / update() 修改；</span>
-<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="c1">//   - computed     ：由其他 signal 计算得出的值，</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="c1">//   - computed ：由其他 signal 计算得出的值，</span>
 <a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="c1">//                    当它们变化时自动重新计算；</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="c1">//   - effect       ：在其读取的 signal 每次变化时</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="c1">//   - effect ：在其读取的 signal 每次变化时</span>
 <a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="c1">//                    执行的代码（"副作用"）；</span>
 <a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="c1">//   - linkedSignal ：可写的 signal，但当另一个 signal 变化时，</span>
 <a id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="c1">//                    会被重置为一个计算得出的值。</span>
@@ -1733,7 +1733,7 @@
 <li>第 37–39 行：<strong><em>[@for]</em></strong> 为列表中的每个条目重复该块（参见示例 03）。</li>
 </ul>
 <p>在开发服务器运行时（<strong><em>[npm start 02-signals]</em></strong>），我们修改商品、价格、数量和税率：</p>
-<p><img src="images/10000000000005DC000002DCC9195EA1.png" width="605" height="295" style="width:16cm;height:7.809cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000002DCC9195EA1.png" /></p>
+<p><img src="images/10000000000005DC000002DC347A458A.png" width="605" height="295" style="width:16cm;height:7.809cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000002DC347A458A.png" /></p>
 <p>每当含税总额发生变化时，effect 就会向历史记录添加一行并更改标签页标题。更改商品会将数量重置为 1。</p>
 <p>这些信号并非<em>[Angular]</em>所独有：在<em>[SolidJS]</em>、<em>[Preact]</em>、<em>[Vue.js]</em> （其中<strong><em>[ref]</em></strong> 起相同作用）中也能找到它们，并且有一份标准草案提议将其加入<em>[JavaScript]</em> 本身。在信号出现之前（于 2023 年在<em>[Angular]</em> 16 中引入），<em>[Angular]</em> 会借助<strong>[zone.js]</strong> 库定期检查<em>整个</em>组件树，以确定哪些内容发生了变化。有了信号，它就能确切知道要更新什么：这就是<strong>“zoneless”</strong> 模式，它是<em>[Angular]</em> 22 的默认模式，并用于本课程的所有示例。</p>
 <h2 id="23-示例-03模板语法">2.3. <span style="color: #2e74b5">示例 03：模板语法</span></h2>
@@ -1804,7 +1804,7 @@
 <a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="c1">// 03-templates/src/app/app.ts - 模板语法</span>
 <a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="c1">// -------------------------------------------------------------------------</span>
 <a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="c1">// 在 Angular 模板中：</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="c1">//   - [property]="expr"   ：元素的属性，由表达式</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="c1">//   - [property]="expr" ：元素的属性，由表达式</span>
 <a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="c1">//                           计算得出（[src]、[disabled]、[hidden]...）；</span>
 <a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="c1">//   - [class.name]="expr" ：表达式为真时应用 CSS 类 "name"；</span>
 <a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="c1">//     [style.prop]="expr" ：一个 CSS 属性；</span>
@@ -1813,8 +1813,8 @@
 <a id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="c1">//   - @for (x of list; track x.id)：对每个元素重复的块；</span>
 <a id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="c1">//     track 给出每个元素的标识；@empty，列表</span>
 <a id="__codelineno-13-13" name="__codelineno-13-13"></a><span class="c1">//     为空时显示的块；</span>
-<a id="__codelineno-13-14" name="__codelineno-13-14"></a><span class="c1">//   - @switch / @case     ：根据某个值在多个块中选择一个；</span>
-<a id="__codelineno-13-15" name="__codelineno-13-15"></a><span class="c1">//   - @let name = expr;   ：模板的局部变量。</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14"></a><span class="c1">//   - @switch / @case ：根据某个值在多个块中选择一个；</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15"></a><span class="c1">//   - @let name = expr; ：模板的局部变量。</span>
 <a id="__codelineno-13-16" name="__codelineno-13-16"></a><span class="c1">// =========================================================================</span>
 <a id="__codelineno-13-17" name="__codelineno-13-17"></a>
 <a id="__codelineno-13-18" name="__codelineno-13-18"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Component</span><span class="p">,</span><span class="w"> </span><span class="nx">computed</span><span class="p">,</span><span class="w"> </span><span class="nx">signal</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@angular/core'</span><span class="p">;</span>
@@ -2045,9 +2045,9 @@
 </ul>
 <p>模板表达式类似于<em>[TypeScript]</em>，但受到限制：不允许赋值（事件处理程序中除外，示例 04），不允许使用<strong><em>[new]</em></strong>，不能访问全局变量（<strong><em>[window]</em></strong>、<strong><em>[document]</em></strong>）。它只能访问组件的属性和方法。</p>
 <p><strong><em>[npm start 03-templates]</em></strong>：</p>
-<p><img src="images/10000000000005DC000002A0BE73B0ED.png" width="605" height="271" style="width:16cm;height:7.168cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000002A0BE73B0ED.png" /></p>
+<p><img src="images/10000000000005DC000002A0D8F658CB.png" width="605" height="271" style="width:16cm;height:7.168cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000002A0D8F658CB.png" /></p>
 <p>输入“gen”并隐藏帮助：</p>
-<p><img src="images/10000000000005DC000001C22D4AE557.png" width="605" height="181" style="width:16cm;height:4.8cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001C22D4AE557.png" /></p>
+<p><img src="images/10000000000005DC000001C25E7749D0.png" width="605" height="181" style="width:16cm;height:4.8cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000001C25E7749D0.png" /></p>
 <p>早期版本的<em>[Angular]</em> 使用<strong>结构型指令</strong>来编写这些块：<strong><em>[*ngIf]</em></strong>、<strong><em>[*ngFor]</em></strong>、<strong><em>[[ngSwitch]]</em></strong>。它们仍然存在于许多项目中；随<strong><em>[Angular]</em></strong> 17 引入的<strong><em>[@if]</em></strong> / <strong><em>[@for]</em></strong> / <em>[@switch]</em>语法如今是推荐的写法。</p>
 <h2 id="24-示例-04事件">2.4. <span style="color: #2e74b5">示例 04：事件</span></h2>
 <p>一个响应用户操作的任务列表。组件：</p>
@@ -2130,8 +2130,8 @@
 <a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="c1">// -------------------------------------------------------------------------</span>
 <a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="c1">// (event)="statement"：当元素发出该事件时</span>
 <a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="c1">// 执行此语句：</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="c1">//   - (click)="f()"            调用 f；</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="c1">//   - (click)="f(3, $event)"   带参数调用 f；$event 是</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="c1">//   - (click)="f()" 调用 f；</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="c1">//   - (click)="f(3, $event)" 带参数调用 f；$event 是</span>
 <a id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="c1">//                              浏览器的原生事件；</span>
 <a id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="c1">//   - (keyup.enter)、(keydown.escape)：仅针对该按键；</span>
 <a id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="c1">//   - 元素上的 #name：模板的"引用变量"，它</span>
@@ -2298,7 +2298,7 @@
 </ul>
 <p>在这里，我们自己读取字段（<strong><em>[field.value], [box.checked]</em></strong>）。后面的示例会把这项工作交给<strong><em>[ngModel]</em></strong> ，然后再交给基于信号的表单。</p>
 <p><strong><em>[npm start 04-events]；添加一个任务（Enter）</em></strong>，勾选第二个任务，并在字段中点击：</p>
-<p><img src="images/10000000000005DC00000302B5E1C457.png" width="605" height="310" style="width:16cm;height:8.213cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC00000302B5E1C457.png" /></p>
+<p><img src="images/10000000000005DC000003023E805645.png" width="605" height="310" style="width:16cm;height:8.213cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000003023E805645.png" /></p>
 <p><em>[Angular]</em> 仅在响应事件或信号变化时更新页面。由模板处理的事件（(click)、(submit) 等）足以触发对组件的检查；然而，之后被修改的数据——在事件之外（例如响应服务器或定时器触发时）——只有当它是信号时才会显示。因此，本课程始终遵循这条规则：<strong>模板显示的任何数据都是信号</strong>。</p>
 <h2 id="25-示例-05表单字段与-ngmodel">2.5. <span style="color: #2e74b5">示例 05：表单字段与 ngModel</span></h2>
 <p>与<em>[NestJS]</em> 课程中示例 18 相同的表单（所有字段类型），但没有服务器：一切都在浏览器中完成。字段通过<strong><em>[ngModel]</em></strong> 指令与信号链接：</p>
@@ -2383,12 +2383,12 @@
 <a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="c1">// 而修改 signal（通过代码）也会修改字段。[( )] 语法被称为</span>
 <a id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="c1">// "盒子里的香蕉"，它结合了 [ngModel]（signal 到字段）和</span>
 <a id="__codelineno-18-8" name="__codelineno-18-8"></a><span class="c1">// (ngModelChange)（字段到 signal）。收到的值取决于字段：</span>
-<a id="__codelineno-18-9" name="__codelineno-18-9"></a><span class="c1">//   - text input、textarea           -&gt; string</span>
-<a id="__codelineno-18-10" name="__codelineno-18-10"></a><span class="c1">//   - input type="number"            -&gt; number（字段为空时为 null）</span>
-<a id="__codelineno-18-11" name="__codelineno-18-11"></a><span class="c1">//   - 单个复选框                     -&gt; boolean</span>
-<a id="__codelineno-18-12" name="__codelineno-18-12"></a><span class="c1">//   - 单选按钮                       -&gt; 所选按钮的值</span>
-<a id="__codelineno-18-13" name="__codelineno-18-13"></a><span class="c1">//   - select / 多选 select           -&gt; 值 / 值的数组</span>
-<a id="__codelineno-18-14" name="__codelineno-18-14"></a><span class="c1">//   - input type="date"              -&gt; 字符串 "yyyy-MM-dd"</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9"></a><span class="c1">//   - text input、textarea -&gt; string</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10"></a><span class="c1">//   - input type="number" -&gt; number（字段为空时为 null）</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11"></a><span class="c1">//   - 单个复选框 -&gt; boolean</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12"></a><span class="c1">//   - 单选按钮 -&gt; 所选按钮的值</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13"></a><span class="c1">//   - select / 多选 select -&gt; 值 / 值的数组</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14"></a><span class="c1">//   - input type="date" -&gt; 字符串 "yyyy-MM-dd"</span>
 <a id="__codelineno-18-15" name="__codelineno-18-15"></a><span class="c1">// 在 &lt;form&gt; 中，每个由 ngModel 绑定的字段都必须有 name 属性。</span>
 <a id="__codelineno-18-16" name="__codelineno-18-16"></a><span class="c1">// 与 NestJS 课程中的示例 18 是同一个表单；但这里没有</span>
 <a id="__codelineno-18-17" name="__codelineno-18-17"></a><span class="c1">// 服务器：一切都在浏览器中完成。</span>
@@ -2646,7 +2646,7 @@
 <li>第 80 行：<strong><em>[@if (sent(); as text)]</em></strong>：如果该值为“真”（此处为非空字符串），则显示该块，并且<strong><em>[as text]</em></strong> 使其成为该块的一个变量。</li>
 </ul>
 <p><strong><em>[npm start 05-ngmodel]</em></strong>；填写表单，然后提交：</p>
-<p><img src="images/10000000000005DC00000441E9FB6C53.png" width="605" height="439" style="width:16cm;height:11.615cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC00000441E9FB6C53.png" /></p>
+<p><img src="images/10000000000005DC0000044117D9F4D2.png" width="605" height="439" style="width:16cm;height:11.615cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000044117D9F4D2.png" /></p>
 <p><strong><em>[ngModel]</em></strong> 自<em>[Angular]</em> 的第一个版本起就已存在，并且从<em>[Angular]</em> 17 起接受信号。它存在于无数应用中。然而，除了值的简单来回传递之外，其他一切都留给组件自己处理：合并字段、判断哪些字段被修改过、验证它们……下一个示例展示了编写表单的最新方式。</p>
 <h2 id="26-示例-06基于信号的表单">2.6. <span style="color: #2e74b5">示例 06：基于信号的表单</span></h2>
 <p><em>[Angular]</em> 22 引入了一种完全基于信号的编写表单的新方式：<strong>基于信号的表单</strong>（<em>[Signal Forms]</em>，包<strong><em>[@angular/forms/signals]</em></strong>）。其原理是：</p>
@@ -3008,7 +3008,7 @@
 <li>第 86 行：整个表单的状态——只要其中任何字段被修改，它就会更新。</li>
 </ul>
 <p><strong><em>[npm start 06-signal-forms]</em></strong>；选择称谓，输入名、姓和年龄，勾选复选框（电子邮件字段变为可编辑），输入电子邮件地址，然后点击“Name in upper case”：</p>
-<p><img src="images/10000000000005DC000003863A6A757E.png" width="605" height="364" style="width:16cm;height:9.62cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000003863A6A757E.png" /></p>
+<p><img src="images/10000000000005DC0000038644A21DE7.png" width="605" height="364" style="width:16cm;height:9.62cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000038644A21DE7.png" /></p>
 <p>与<strong><em>[ngModel]</em></strong>相比：整个表单只有一个信号，每个字段的状态无需编写任何代码即可获得。基于信号的表单无法将多个复选框关联到同一个列表，也无法关联到多选列表：对于这些字段，请使用示例 05 中的技术。</p>
 <h2 id="27-示例-07表单验证">2.7. <span style="color: #2e74b5">示例 07：表单验证</span></h2>
 <p>来自<em>[RdvMedecins]</em>应用程序的“创建账户”表单，在浏览器中使用与服务器相同的规则进行验证：称谓在列表中，名和姓必填（最多 20 个字符），用户名为小写，密码至少 6 个字符，确认密码。</p>
@@ -3366,11 +3366,11 @@
 <li>第 49 行：<strong><em>[f().invalid()]</em></strong>：只要有任何字段无效，表单就是无效的；<strong><em>[f().errorSummary()]</em></strong>（第 50 行）：其所有字段的错误。</li>
 </ul>
 <p><strong><em>[npm start 07-validation]</em></strong>；输入名，转到姓，将其留空，输入一个不正确的用户名：</p>
-<p><img src="images/10000000000005DC0000036F97C6FF1C.png" width="605" height="354" style="width:16cm;height:9.377cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000036F97C6FF1C.png" /></p>
+<p><img src="images/10000000000005DC0000036F3D499694.png" width="605" height="354" style="width:16cm;height:9.377cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000036F3D499694.png" /></p>
 <p>只有已填写过的字段才会以绿色或红色高亮显示。在表单为空时点击“Create the account”：所有字段都会高亮显示：</p>
-<p><img src="images/10000000000005DC0000040475EF65BF.png" width="605" height="414" style="width:16cm;height:10.964cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000040475EF65BF.png" /></p>
+<p><img src="images/10000000000005DC0000040476DB3929.png" width="605" height="414" style="width:16cm;height:10.964cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000040476DB3929.png" /></p>
 <p>空的确认字段是“有效的”：它与同样为空的密码相匹配。一个有效的表单：</p>
-<p><img src="images/10000000000005DC0000039314CF3EC8.png" width="605" height="369" style="width:16cm;height:9.76cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000039314CF3EC8.png" /></p>
+<p><img src="images/10000000000005DC00000393E15F2147.png" width="605" height="369" style="width:16cm;height:9.76cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC00000393E15F2147.png" /></p>
 <h2 id="28-示例-08响应式表单">2.8. <span style="color: #2e74b5">示例 08：响应式表单</span></h2>
 <p>在信号表单出现之前，<em>[Angular]</em>表单是使用<strong><em>[ngModel]</em></strong>（示例 05）或响应式表单（[ReactiveFormsModule]）编写的，后一种 API 在现有应用程序中最为常用。你一定会遇到它：下面是用它重写的示例 07 中的表单。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1"> 1</a></span>
@@ -3662,7 +3662,7 @@
 <li>第 56 行：确认错误属于<strong>组</strong>：<strong><em>[form.hasError(&#x27;confirmation&#x27;)]</em></strong>。</li>
 </ul>
 <p><strong><em>[npm start 08-reactive-forms]</em></strong>；出现几处错误，然后点击“Create the account”：</p>
-<p><img src="images/10000000000005DC0000046EE6A738A2.png" width="605" height="457" style="width:16cm;height:12.097cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000046EE6A738A2.png" /></p>
+<p><img src="images/10000000000005DC0000046EBB69613F.png" width="605" height="457" style="width:16cm;height:12.097cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000046EBB69613F.png" /></p>
 <p>这两种 API 的功能相同。响应式表单在代码中描述表单（控件同时保存值和状态），而信号驱动的表单则从数据出发（一个附加了规则的模型），并与应用程序其余部分的信号自然地集成。在本课程的后续部分和案例研究中，我们将使用后者。</p>
 <h2 id="29-示例-09管道">2.9. <span style="color: #2e74b5">示例 09：管道</span></h2>
 <p><strong>管道</strong>在不修改值的前提下格式化要显示的值：<strong><em>[{{ value | pipe }}]</em></strong>，或者带参数的形式<strong><em>[{{ value | pipe: parameter1 : parameter2 }}]</em></strong>。<em>[Angular]</em>提供了十几个管道；你也可以编写自己的管道。</p>
@@ -3740,8 +3740,8 @@
 <a id="__codelineno-28-4" name="__codelineno-28-4"></a><span class="c1">// 管道是一个由 @Pipe 装饰的类，其 transform() 方法</span>
 <a id="__codelineno-28-5" name="__codelineno-28-5"></a><span class="c1">// 接收放在竖线之前的值（以及可能的</span>
 <a id="__codelineno-28-6" name="__codelineno-28-6"></a><span class="c1">// 参数），并返回要显示的内容：</span>
-<a id="__codelineno-28-7" name="__codelineno-28-7"></a><span class="c1">//     {{ slot | timeRange }}           -&gt; "8:00 - 8:20"</span>
-<a id="__codelineno-28-8" name="__codelineno-28-8"></a><span class="c1">//     {{ slot | timeRange: 'start' }}  -&gt; "8:00"</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7"></a><span class="c1">//     {{ slot | timeRange }} -&gt; "8:00 - 8:20"</span>
+<a id="__codelineno-28-8" name="__codelineno-28-8"></a><span class="c1">//     {{ slot | timeRange: 'start' }} -&gt; "8:00"</span>
 <a id="__codelineno-28-9" name="__codelineno-28-9"></a><span class="c1">// 管道默认是"纯"的：只有当值或参数发生变化时，Angular 才会</span>
 <a id="__codelineno-28-10" name="__codelineno-28-10"></a><span class="c1">// 再次调用 transform()（同一个对象 = 同一个结果）。</span>
 <a id="__codelineno-28-11" name="__codelineno-28-11"></a><span class="c1">// =========================================================================</span>
@@ -4025,7 +4025,7 @@
 <li>第 34 行：我们的管道<strong><em>[timeRange]</em></strong>，先不带参数，再带参数。</li>
 </ul>
 <p><strong><em>[npm start 09-pipes]</em></strong>：</p>
-<p><img src="images/10000000000005DC000005784AB97264.png" width="605" height="564" style="width:16cm;height:14.933cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC000005784AB97264.png" /></p>
+<p><img src="images/10000000000005DC0000057883C37C48.png" width="605" height="564" style="width:16cm;height:14.933cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005DC0000057883C37C48.png" /></p>
 <p><em>[Angular]</em>还提供管道<strong><em>[async]</em></strong>，用于显示可观察对象的最新值（见示例 19），以及用于复数形式的<strong><em>[i18nPlural]</em></strong>。<em>[ngx-translate]</em>提供管道<strong><em>[translate]</em></strong>，用于翻译文本（示例 21）。</p>
 
 
