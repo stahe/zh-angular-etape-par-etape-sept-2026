@@ -1173,7 +1173,7 @@
 <li>第 19 行：选择器：父组件将写<strong><em>[&lt;app-doctor-card&gt;]</em></strong>；</li>
 <li>第 25–29 行：组件的输入（[inputs]）——由其父组件传递给它的数据。<strong><em>[input()]</em></strong>创建一个<strong>只读</strong>信号，用于跟踪父组件传入的值：<ul>
 <li>第 25–26 行：<strong><em>[input.required&lt;T&gt;()]</em></strong>：必需的输入。如果父组件的模板中省略了<strong><em>[[doctor]]</em></strong>，将导致编译错误；</li>
-<li>第 29 行：<strong><em>[input(default value)]：可选的输入。</em></strong><strong><em>[transform]</em></strong>选项用于转换接收到的值：<strong><em>[booleanAttribute]</em></strong>将属性的存在（<strong><em>[&lt;app-doctor-card compact&gt;]</em></strong>，没有值）转换为<strong><em>[true]</em></strong>，就像 HTML 属性<strong><em>[disabled]</em></strong>一样；</li>
+<li>第 29 行：<strong><em>[input(default value)]：可选的输入。[transform]</em></strong>选项用于转换接收到的值：<strong><em>[booleanAttribute]</em></strong>将属性的存在（<strong><em>[&lt;app-doctor-card compact&gt;]</em></strong>，没有值）转换为<strong><em>[true]</em></strong>，就像 HTML 属性<strong><em>[disabled]</em></strong>一样；</li>
 </ul>
 </li>
 <li>第 32 行：一个基于输入的 [computed]：如果父组件改变了输入，就会重新计算。</li>

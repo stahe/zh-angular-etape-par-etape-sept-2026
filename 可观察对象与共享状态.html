@@ -979,7 +979,7 @@
 <p><strong>边输入边搜索</strong>：</p>
 <p>这是可观察对象的一个经典示例：我们希望搜索姓名包含正在输入文本的医生，同时不在每次按键时都向服务器发送请求，也不会冒着较慢的响应覆盖较新响应的风险。</p>
 <ul>
-<li>第 40 行：一个 <code>***[Subject]</code><strong><em> 是一个我们可以自行</em>*推送</strong>值的可观察对象，使用 <code>***[next]***</code>：第 73 行，在每次按键时（模板会为每个<strong><em>[onInput]</em></strong> <strong><em>[input]</em></strong>事件调用它）；</li>
+<li>第 40 行：一个 <code>***[Subject]</code><strong><em> 是一个我们可以自行</em>*推送</strong>值的可观察对象，使用 <code>***[next]***</code>：第 73 行，在每次按键时（模板会为每个<strong><em>[onInput] [input]</em></strong>事件调用它）；</li>
 <li>第 43 行：对文本进行清理（去除首尾空白，转为小写）；</li>
 <li>第 44 行：<strong><em>[debounceTime(400)]</em></strong> 只有在 400 毫秒内没有其他值到达时才输出一个值：只要用户还在输入，就不会发送任何内容；</li>
 <li>第 45 行：<strong><em>[distinctUntilChanged]</em></strong> 忽略与前一个值相同的值（“pel”，然后“pelx”被立即删除：又是“pel”）；</li>
