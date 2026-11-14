@@ -760,14 +760,14 @@
 <h1 id="1-简介">1. <span style="color: #2e74b5">简介</span></h1>
 <p>本文档的 PDF 位于<a href="https://1drv.ms/b/c/f53a919f43d27eb5/IQBUJlKa9_dTQZ9Z0sBrgKMAAT5BB9ECFgPuoa64v6doJZQ?e=NdCawU"><u><span style="color: #0563c1">此处</span></u></a>。</p>
 <p>本文档的代码位于<a href="https://1drv.ms/u/c/f53a919f43d27eb5/IQDp0wrTO2gfR6OxiE8qt2UtAfs3xIqROfl9Q6rJWKhSC4k"><u><span style="color: #0563c1">此处</span></u></a>。</p>
-<p>本文档由 <strong>Anthropic 的 AI Claude</strong> 制作。它承接课程 <a href="https://stahe.github.io/en-nestjs-html-sept-2026/"><u><span style="color: #0563c1">“NestJS Web 框架循序渐进入门</span></u></a>”，并在此基础上<strong>转换视角</strong>：</p>
+<p>本文档由 <strong>Anthropic 的 AI Claude</strong> 制作。它承接课程 <a href="https://stahe.github.io/zh-nestjs-html-sept-2026/"><u><span style="color: #0563c1">“NestJS Web 框架循序渐进入门</span></u></a>”，并在此基础上<strong>转换视角</strong>：</p>
 <ul>
 <li>在课程 <em>[NestJS]</em>中，<strong>服务器</strong> 生成 HTML 页面（视图引擎 <em>[Handlebars]</em>）；浏览器只负责显示它们；</li>
 <li>在本课程中，页面是<strong>在浏览器中</strong> 由一个 <em>[Angular]</em> 应用程序生成的；服务器现在只是一个简单的 JSON 服务器，仅提供数据。</li>
 </ul>
 <p>不过，应用程序的页面保持不变：它们就是<em>[RdvMedecins]</em> 应用程序中已通过其他框架展示过的页面（带验证码（CAPTCHA）的登录、医生日程、预约窗口、患者门户、医生与客户管理、账户创建、法语和英语）。</p>
-<p>本文档沿用与前几份文档相同的结构：首先是大量简短的示例，每个示例聚焦于 <em>[Angular]</em> 的一个具体概念，随后是一个完整的案例研究——<em>[Angular]</em> 客户端，用于 <em>[RdvMedecins]</em> 应用程序——所有文件都带有注释。它遵循课程 <a href="https://stahe.github.io/en-vuejs-etape-par-etape-sept-2026/"><u><span style="color: #0563c1">“Vue.js 框架循序渐进入门</span></u></a>”的大纲：熟悉 <em>[Vue.js]</em> 的读者会发现相同的示例，只是以 <em>[Angular]</em> 的风格编写。由于 <em>[Angular]</em> 是一个功能更丰富的框架，因此示例更多：25 个，而不是 20 个。</p>
-<p>关于这一主题已有一门课程：<a href="https://stahe.github.io/en-angular-nestjs-sept-2026/"><u><span style="color: #0563c1">Angular/NestJS 客户端/服务器示例（2026）</span></u></a>，它同时涵盖服务器和客户端。本文档的方法有所不同：服务器被视为<strong>黑盒</strong>，我们只关心其 API 和 JSON，并先<em>[Angular]</em> 循序渐进地学习，然后再着手完整的客户端。</p>
+<p>本文档沿用与前几份文档相同的结构：首先是大量简短的示例，每个示例聚焦于 <em>[Angular]</em> 的一个具体概念，随后是一个完整的案例研究——<em>[Angular]</em> 客户端，用于 <em>[RdvMedecins]</em> 应用程序——所有文件都带有注释。它遵循课程 <a href="https://stahe.github.io/zh-vuejs-etape-par-etape-sept-2026/"><u><span style="color: #0563c1">“Vue.js 框架循序渐进入门</span></u></a>”的大纲：熟悉 <em>[Vue.js]</em> 的读者会发现相同的示例，只是以 <em>[Angular]</em> 的风格编写。由于 <em>[Angular]</em> 是一个功能更丰富的框架，因此示例更多：25 个，而不是 20 个。</p>
+<p>关于这一主题已有一门课程：<a href="https://stahe.github.io/zh-angular-nestjs-sept-2026/"><u><span style="color: #0563c1">Angular/NestJS 客户端/服务器示例（2026）</span></u></a>，它同时涵盖服务器和客户端。本文档的方法有所不同：服务器被视为<strong>黑盒</strong>，我们只关心其 API 和 JSON，并先<em>[Angular]</em> 循序渐进地学习，然后再着手完整的客户端。</p>
 <h2 id="11-angular-在-web-应用程序中的作用">1.1. <span style="color: #2e74b5">Angular 在 Web 应用程序中的作用</span></h2>
 <p>该应用程序由两部分组成，它们之间仅通过请求进行通信：</p>
 <p><img src="images/1000000000000AF0000002CA169579EA.png" width="605" height="154" style="width:16cm;height:4.08cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000AF0000002CA169579EA.png" /></p>
